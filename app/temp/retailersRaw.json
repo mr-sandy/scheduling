@@ -1,0 +1,2039 @@
+[
+  {
+    "retailer": "Auchan"
+  },
+  {
+    "retailer": "Booker"
+  },
+  {
+    "retailer": "Costco"
+  },
+  {
+    "retailer": "IGA-AU"
+  },
+  {
+    "retailer": "Oda-FI"
+  },
+  {
+    "retailer": "Iceland"
+  },
+  {
+    "retailer": "Ozon-RU"
+  },
+  {
+    "retailer": "Plus-NL"
+  },
+  {
+    "retailer": "Tiki-VN"
+  },
+  {
+    "retailer": "Big-C-TH"
+  },
+  {
+    "retailer": "Chewy-US"
+  },
+  {
+    "retailer": "Daraz-PK"
+  },
+  {
+    "retailer": "Flink-DE"
+  },
+  {
+    "retailer": "Jumbo-CO"
+  },
+  {
+    "retailer": "Jumia-MA"
+  },
+  {
+    "retailer": "Le-Clerc"
+  },
+  {
+    "retailer": "Lider-CL"
+  },
+  {
+    "retailer": "Lotus-TH"
+  },
+  {
+    "retailer": "Metro-DE"
+  },
+  {
+    "retailer": "Waitrose"
+  },
+  {
+    "retailer": "Amazon-AU"
+  },
+  {
+    "retailer": "Amazon-BR"
+  },
+  {
+    "retailer": "Amazon-CA"
+  },
+  {
+    "retailer": "Amazon-ES"
+  },
+  {
+    "retailer": "Amazon-FR"
+  },
+  {
+    "retailer": "Amazon-JP"
+  },
+  {
+    "retailer": "Amazon-MX"
+  },
+  {
+    "retailer": "Amazon-UK"
+  },
+  {
+    "retailer": "Amazon-US"
+  },
+  {
+    "retailer": "Casino-FR"
+  },
+  {
+    "retailer": "Cobasi-BR"
+  },
+  {
+    "retailer": "Costco-US"
+  },
+  {
+    "retailer": "EFresh-GR"
+  },
+  {
+    "retailer": "Gopuff-UK"
+  },
+  {
+    "retailer": "Morrisons"
+  },
+  {
+    "retailer": "MyTime-DE"
+  },
+  {
+    "retailer": "Nocibe-FR"
+  },
+  {
+    "retailer": "Potboy-MY"
+  },
+  {
+    "retailer": "Ralphs-US"
+  },
+  {
+    "retailer": "Rohlik-CZ"
+  },
+  {
+    "retailer": "Smyths-DE"
+  },
+  {
+    "retailer": "VetZoo-NO"
+  },
+  {
+    "retailer": "BestBuy-CA"
+  },
+  {
+    "retailer": "Merqueo-CO"
+  },
+  {
+    "retailer": "Migroos-CH"
+  },
+  {
+    "retailer": "Novapet-CL"
+  },
+  {
+    "retailer": "Payless-US"
+  },
+  {
+    "retailer": "Petlebi-TR"
+  },
+  {
+    "retailer": "Redmart-SG"
+  },
+  {
+    "retailer": "Walmart-CR"
+  },
+  {
+    "retailer": "Walmart-US"
+  },
+  {
+    "retailer": "AeonMall-VN"
+  },
+  {
+    "retailer": "Alimerka-ES"
+  },
+  {
+    "retailer": "Flipkart-IN"
+  },
+  {
+    "retailer": "JohnBell-UK"
+  },
+  {
+    "retailer": "Justdogs-IN"
+  },
+  {
+    "retailer": "Kritikos-GR"
+  },
+  {
+    "retailer": "Parfetts-UK"
+  },
+  {
+    "retailer": "ZooRoyal-DE"
+  },
+  {
+    "retailer": "Albert-Heijn"
+  },
+  {
+    "retailer": "Carrefour-ES"
+  },
+  {
+    "retailer": "Cdiscount-FR"
+  },
+  {
+    "retailer": "CityGross-SE"
+  },
+  {
+    "retailer": "FairPrice-SG"
+  },
+  {
+    "retailer": "Food4Less-US"
+  },
+  {
+    "retailer": "Kolaymama-TR"
+  },
+  {
+    "retailer": "Pet-Stock-AU"
+  },
+  {
+    "retailer": "Pets-At-Home"
+  },
+  {
+    "retailer": "Sams-Club-US"
+  },
+  {
+    "retailer": "Tokopedia-ID"
+  },
+  {
+    "retailer": "Albertsons-US"
+  },
+  {
+    "retailer": "BakersPlus-US"
+  },
+  {
+    "retailer": "Budget-Pet-AU"
+  },
+  {
+    "retailer": "Continente-PT"
+  },
+  {
+    "retailer": "MaxAndDrau-PL"
+  },
+  {
+    "retailer": "Mega-Image-RO"
+  },
+  {
+    "retailer": "Ocado-Zoom-UK"
+  },
+  {
+    "retailer": "Walmart-EN-CA"
+  },
+  {
+    "retailer": "AzbukaVkusa-RU"
+  },
+  {
+    "retailer": "Giant-Eagle-US"
+  },
+  {
+    "retailer": "Lowes-Foods-US"
+  },
+  {
+    "retailer": "MetroMarket-US"
+  },
+  {
+    "retailer": "Tiendanimal-ES"
+  },
+  {
+    "retailer": "Amazon-Fresh-DE"
+  },
+  {
+    "retailer": "Amazon-Fresh-SG"
+  },
+  {
+    "retailer": "Amazon-Fresh-US"
+  },
+  {
+    "retailer": "Bringmeister-DE"
+  },
+  {
+    "retailer": "HarrisTeeter-US"
+  },
+  {
+    "retailer": "Holland-Barrett"
+  },
+  {
+    "retailer": "MartinSevera-SE"
+  },
+  {
+    "retailer": "MustiJaMirri-FI"
+  },
+  {
+    "retailer": "Shipt-Target-US"
+  },
+  {
+    "retailer": "ElcorteIngles-PT"
+  },
+  {
+    "retailer": "Elcorteingles-ES"
+  },
+  {
+    "retailer": "KRuoka-Market-FI"
+  },
+  {
+    "retailer": "Klikindomaret-ID"
+  },
+  {
+    "retailer": "Thomas-Ridley-UK"
+  },
+  {
+    "retailer": "Foodora-Market-SE"
+  },
+  {
+    "retailer": "Mistermascotas-MX"
+  },
+  {
+    "retailer": "PetDrugsOnline-UK"
+  },
+  {
+    "retailer": "Instacart-Petco-US"
+  },
+  {
+    "retailer": "Walmart-Grocery-US"
+  },
+  {
+    "retailer": "AlbertsonsMarket-US"
+  },
+  {
+    "retailer": "BM-Supermercados-ES"
+  },
+  {
+    "retailer": "Cornershop-Jumbo-CL"
+  },
+  {
+    "retailer": "Cornershop-Lider-CL"
+  },
+  {
+    "retailer": "Instacart-Sprouts-US"
+  },
+  {
+    "retailer": "PingoDoceMercadao-PT"
+  },
+  {
+    "retailer": "EroskiSupermercado-ES"
+  },
+  {
+    "retailer": "Instacart-SamsClub-US"
+  },
+  {
+    "retailer": "KRuoka-SuperMarket-FI"
+  },
+  {
+    "retailer": "United-Supermarket-US"
+  },
+  {
+    "retailer": "El-Palaciode-Hierro-MX"
+  },
+  {
+    "retailer": "Elcorteingles-Store-ES"
+  },
+  {
+    "retailer": "Instacart-Albertsons-US"
+  },
+  {
+    "retailer": "FineWineANDGoodSpirits-US"
+  },
+  {
+    "retailer": "Instacart-WoodmansFood-US"
+  },
+  {
+    "retailer": "Lowes-Home-Improvement-CA"
+  },
+  {
+    "retailer": "HEB"
+  },
+  {
+    "retailer": "ARN-UK"
+  },
+  {
+    "retailer": "UDF-US"
+  },
+  {
+    "retailer": "Vet-UK"
+  },
+  {
+    "retailer": "Aldi-UK"
+  },
+  {
+    "retailer": "Ebay-UK"
+  },
+  {
+    "retailer": "Flip-KZ"
+  },
+  {
+    "retailer": "Meny-NO"
+  },
+  {
+    "retailer": "Billa-AT"
+  },
+  {
+    "retailer": "Flink-FR"
+  },
+  {
+    "retailer": "Metro-PK"
+  },
+  {
+    "retailer": "Petco-MX"
+  },
+  {
+    "retailer": "Amazon-PL"
+  },
+  {
+    "retailer": "Amazon-ZA"
+  },
+  {
+    "retailer": "Apotek-NO"
+  },
+  {
+    "retailer": "Deebee-UK"
+  },
+  {
+    "retailer": "Knuspr-DE"
+  },
+  {
+    "retailer": "Mondou-CA"
+  },
+  {
+    "retailer": "VetZoo-SE"
+  },
+  {
+    "retailer": "ZooArt-PL"
+  },
+  {
+    "retailer": "Sephora-FR"
+  },
+  {
+    "retailer": "Staples-CA"
+  },
+  {
+    "retailer": "Best-One-UK"
+  },
+  {
+    "retailer": "Filshill-UK"
+  },
+  {
+    "retailer": "Foodlion-US"
+  },
+  {
+    "retailer": "Gamestop-US"
+  },
+  {
+    "retailer": "Joueclub-FR"
+  },
+  {
+    "retailer": "PetPlace-NL"
+  },
+  {
+    "retailer": "SystemeU-FR"
+  },
+  {
+    "retailer": "Costco-FR-CA"
+  },
+  {
+    "retailer": "Hannaford-US"
+  },
+  {
+    "retailer": "Juguettos-ES"
+  },
+  {
+    "retailer": "Mercadona-ES"
+  },
+  {
+    "retailer": "SpecWines-US"
+  },
+  {
+    "retailer": "Stephanis-CY"
+  },
+  {
+    "retailer": "LupaOnline-ES"
+  },
+  {
+    "retailer": "SmartFinal-US"
+  },
+  {
+    "retailer": "Candy-Store-US"
+  },
+  {
+    "retailer": "VitusApotek-NO"
+  },
+  {
+    "retailer": "Wildberries-RU"
+  },
+  {
+    "retailer": "Ifood-Cobasi-BR"
+  },
+  {
+    "retailer": "MercadoLibre-CL"
+  },
+  {
+    "retailer": "MercadoLibre-CO"
+  },
+  {
+    "retailer": "SuperBonarea-ES"
+  },
+  {
+    "retailer": "Ubereats-IGA-AU"
+  },
+  {
+    "retailer": "Kaupat-Prisma-FI"
+  },
+  {
+    "retailer": "Rakuten-Charm-JP"
+  },
+  {
+    "retailer": "Rakuten-Seiyu-JP"
+  },
+  {
+    "retailer": "Rappi-7Eleven-MX"
+  },
+  {
+    "retailer": "CuidaMiMascota-MX"
+  },
+  {
+    "retailer": "Dollar-General-US"
+  },
+  {
+    "retailer": "Doordash-Coles-AU"
+  },
+  {
+    "retailer": "JJ-Foodservice-UK"
+  },
+  {
+    "retailer": "Rakuten-Tech21-JP"
+  },
+  {
+    "retailer": "SPAR-Blakemore-UK"
+  },
+  {
+    "retailer": "Castell-Howells-UK"
+  },
+  {
+    "retailer": "HeadsUpForTails-IN"
+  },
+  {
+    "retailer": "Amazon-Fresh-Dia-ES"
+  },
+  {
+    "retailer": "Amazon-Pet-Supplies"
+  },
+  {
+    "retailer": "Creed-Foodservice-UK"
+  },
+  {
+    "retailer": "Instacart-Walmart-CA"
+  },
+  {
+    "retailer": "NormanGoodfellows-ZA"
+  },
+  {
+    "retailer": "Rakuten-Hokkkaido-JP"
+  },
+  {
+    "retailer": "RakutenSoukaidrink-JP"
+  },
+  {
+    "retailer": "Drizly-MarketviewLiquors-US"
+  },
+  {
+    "retailer": "Lulu-AE"
+  },
+  {
+    "retailer": "Catch-AU"
+  },
+  {
+    "retailer": "BWS-AU"
+  },
+  {
+    "retailer": "PetCulture-AU"
+  },
+  {
+    "retailer": "Magalu-BR"
+  },
+  {
+    "retailer": "Garfield-BY"
+  },
+  {
+    "retailer": "GlobalPetFoods-CA"
+  },
+  {
+    "retailer": "Renspets-CA"
+  },
+  {
+    "retailer": "Metro-Ontario-CA"
+  },
+  {
+    "retailer": "RealCanadianSuperstore-CA"
+  },
+  {
+    "retailer": "Pethappy-CL"
+  },
+  {
+    "retailer": "Laika-Mas-Cotas-CL"
+  },
+  {
+    "retailer": "Agrocampo-CO"
+  },
+  {
+    "retailer": "Electroline-CY"
+  },
+  {
+    "retailer": "Mall-CZ"
+  },
+  {
+    "retailer": "WorldOfSweets-DE"
+  },
+  {
+    "retailer": "MyToys-DE"
+  },
+  {
+    "retailer": "Wolt-Market-DK"
+  },
+  {
+    "retailer": "Miscota-ES"
+  },
+  {
+    "retailer": "Mercadona-Telecompra-ES"
+  },
+  {
+    "retailer": "Kauppahalli24-FI"
+  },
+  {
+    "retailer": "GetSetPet-UK"
+  },
+  {
+    "retailer": "Feelunique-UK"
+  },
+  {
+    "retailer": "CocoonCenter-UK"
+  },
+  {
+    "retailer": "Viovet"
+  },
+  {
+    "retailer": "TheRange-UK"
+  },
+  {
+    "retailer": "The-Whisky-Exchange"
+  },
+  {
+    "retailer": "BandQ"
+  },
+  {
+    "retailer": "Escentual-UK"
+  },
+  {
+    "retailer": "BB-Foodservice"
+  },
+  {
+    "retailer": "Coop-UK"
+  },
+  {
+    "retailer": "Monster"
+  },
+  {
+    "retailer": "Amazon-IN"
+  },
+  {
+    "retailer": "Dmart-Ready-IN"
+  },
+  {
+    "retailer": "Paypay-Charm-JP"
+  },
+  {
+    "retailer": "Rakuten-JP"
+  },
+  {
+    "retailer": "Rakuten-Nyanzaq-JP"
+  },
+  {
+    "retailer": "Rakuten-Koji-JP"
+  },
+  {
+    "retailer": "11st-KR"
+  },
+  {
+    "retailer": "Naver-KR"
+  },
+  {
+    "retailer": "Coupang-KR"
+  },
+  {
+    "retailer": "Soriana-MX"
+  },
+  {
+    "retailer": "Medpets-NL"
+  },
+  {
+    "retailer": "Musti-NO"
+  },
+  {
+    "retailer": "Pet-NZ"
+  },
+  {
+    "retailer": "Pet-Express-PH"
+  },
+  {
+    "retailer": "ShopeeMall-PH"
+  },
+  {
+    "retailer": "Rossmann-PL"
+  },
+  {
+    "retailer": "Hebe-PL"
+  },
+  {
+    "retailer": "Auchan-PL"
+  },
+  {
+    "retailer": "Apetete-PL"
+  },
+  {
+    "retailer": "Emag-RO"
+  },
+  {
+    "retailer": "Komus-RU"
+  },
+  {
+    "retailer": "Dogman-SE"
+  },
+  {
+    "retailer": "Wolt-Market-SE"
+  },
+  {
+    "retailer": "Lazada-TH"
+  },
+  {
+    "retailer": "ShopeeMall-TH"
+  },
+  {
+    "retailer": "7eleven-TH"
+  },
+  {
+    "retailer": "LazMall-TH"
+  },
+  {
+    "retailer": "Evinemama-TR"
+  },
+  {
+    "retailer": "PetSuppliesPlus-US"
+  },
+  {
+    "retailer": "Nordstrom-US"
+  },
+  {
+    "retailer": "Walgreens-US"
+  },
+  {
+    "retailer": "Sysco-US"
+  },
+  {
+    "retailer": "HEB-Plus-US"
+  },
+  {
+    "retailer": "Acme-US"
+  },
+  {
+    "retailer": "Raleys-US"
+  },
+  {
+    "retailer": "Amazon-WholeFoods-US"
+  },
+  {
+    "retailer": "Shopee-Supermarket-VN"
+  },
+  {
+    "retailer": "PNP-ZA"
+  },
+  {
+    "retailer": "Wilko"
+  },
+  {
+    "retailer": "XXL-NO"
+  },
+  {
+    "retailer": "Coop-CH"
+  },
+  {
+    "retailer": "Lidl-UK"
+  },
+  {
+    "retailer": "Tops-TH"
+  },
+  {
+    "retailer": "Very-UK"
+  },
+  {
+    "retailer": "Brekz-NL"
+  },
+  {
+    "retailer": "Joker-NO"
+  },
+  {
+    "retailer": "Peppy-JP"
+  },
+  {
+    "retailer": "Petco-CL"
+  },
+  {
+    "retailer": "Hemkop-SE"
+  },
+  {
+    "retailer": "Lazada-VN"
+  },
+  {
+    "retailer": "Privab-SE"
+  },
+  {
+    "retailer": "Apotera-NO"
+  },
+  {
+    "retailer": "Catycan-AR"
+  },
+  {
+    "retailer": "LazMart-PH"
+  },
+  {
+    "retailer": "Sunkost-NO"
+  },
+  {
+    "retailer": "Zooplus-BE"
+  },
+  {
+    "retailer": "Zooplus-ES"
+  },
+  {
+    "retailer": "Zooplus-IT"
+  },
+  {
+    "retailer": "Zooplus-NL"
+  },
+  {
+    "retailer": "NoFrills-CA"
+  },
+  {
+    "retailer": "Petsmart-US"
+  },
+  {
+    "retailer": "Rema1000-DK"
+  },
+  {
+    "retailer": "Voila-FR-CA"
+  },
+  {
+    "retailer": "Amazon-FR-CA"
+  },
+  {
+    "retailer": "BilkaToGo-DK"
+  },
+  {
+    "retailer": "Carrefour-IT"
+  },
+  {
+    "retailer": "DekaMarkt-NL"
+  },
+  {
+    "retailer": "Kenwoodworld"
+  },
+  {
+    "retailer": "PetPlanet-UK"
+  },
+  {
+    "retailer": "Electronet-GR"
+  },
+  {
+    "retailer": "Home-Depot-CA"
+  },
+  {
+    "retailer": "SuperUnico-PA"
+  },
+  {
+    "retailer": "Woolworths-ZA"
+  },
+  {
+    "retailer": "Braunhousehold"
+  },
+  {
+    "retailer": "KingSoopers-US"
+  },
+  {
+    "retailer": "Rappi-Exito-CO"
+  },
+  {
+    "retailer": "SaveOnFoods-CA"
+  },
+  {
+    "retailer": "Carrefour-AR-SA"
+  },
+  {
+    "retailer": "Carrefour-EN-SA"
+  },
+  {
+    "retailer": "Lloyds-Pharmacy"
+  },
+  {
+    "retailer": "ArlasKundwebb-SE"
+  },
+  {
+    "retailer": "Canadian-Tire-CA"
+  },
+  {
+    "retailer": "Family-Dollar-US"
+  },
+  {
+    "retailer": "Instacart-Aldi-US"
+  },
+  {
+    "retailer": "Costco-Business-US"
+  },
+  {
+    "retailer": "Instacart-Wegmans-US"
+  },
+  {
+    "retailer": "Shipt-Publix-35242-US"
+  },
+  {
+    "retailer": "Cornershop-Chedraui-MX"
+  },
+  {
+    "retailer": "UberEats-Albertsons-US"
+  },
+  {
+    "retailer": "Cornershop-Jumbo-APP-CL"
+  },
+  {
+    "retailer": "Shopee-Mall-Coke-Store-VN"
+  },
+  {
+    "retailer": "JustEat-NL"
+  },
+  {
+    "retailer": "PetShop-UK"
+  },
+  {
+    "retailer": "Pavilions-US"
+  },
+  {
+    "retailer": "Frisco-APP-PL"
+  },
+  {
+    "retailer": "Glovo-Carrefour-APP-ES"
+  },
+  {
+    "retailer": "MarjaneDirectDelivery-MA"
+  },
+  {
+    "retailer": "Well-CA"
+  },
+  {
+    "retailer": "Smiths-US"
+  },
+  {
+    "retailer": "UberEats7-11-US"
+  },
+  {
+    "retailer": "Bolt-APP-PL"
+  },
+  {
+    "retailer": "Astro-APP-ID"
+  },
+  {
+    "retailer": "King-Jouet-FR"
+  },
+  {
+    "retailer": "Shopee-APP-MY"
+  },
+  {
+    "retailer": "Morrisons-APP-UK"
+  },
+  {
+    "retailer": "Pandamart-APP-MY"
+  },
+  {
+    "retailer": "Istegelsin-APP-TR"
+  },
+  {
+    "retailer": "Panda-Click-APP-SA"
+  },
+  {
+    "retailer": "Carrefour-Supermarket-ES"
+  },
+  {
+    "retailer": "Cannatas-US"
+  },
+  {
+    "retailer": "Vons-US"
+  },
+  {
+    "retailer": "Rappi-Petz-APP-BR"
+  },
+  {
+    "retailer": "Glovo-Express-APP-MA"
+  },
+  {
+    "retailer": "Glovo-Carrefour-APP-MA"
+  },
+  {
+    "retailer": "BestBuy-US"
+  },
+  {
+    "retailer": "ASDA"
+  },
+  {
+    "retailer": "AB-GR"
+  },
+  {
+    "retailer": "Argos"
+  },
+  {
+    "retailer": "Ocado"
+  },
+  {
+    "retailer": "Tesco"
+  },
+  {
+    "retailer": "Bol-NL"
+  },
+  {
+    "retailer": "CVS-US"
+  },
+  {
+    "retailer": "ICA-SE"
+  },
+  {
+    "retailer": "ODA-NO"
+  },
+  {
+    "retailer": "SSG-KR"
+  },
+  {
+    "retailer": "7NOW-US"
+  },
+  {
+    "retailer": "Coop-SE"
+  },
+  {
+    "retailer": "Petz-BR"
+  },
+  {
+    "retailer": "Rewe-DE"
+  },
+  {
+    "retailer": "Sams-MX"
+  },
+  {
+    "retailer": "Arbuz-KZ"
+  },
+  {
+    "retailer": "Askul-JP"
+  },
+  {
+    "retailer": "Coles-AU"
+  },
+  {
+    "retailer": "Hyvee-US"
+  },
+  {
+    "retailer": "Laika-MX"
+  },
+  {
+    "retailer": "Makro-ZA"
+  },
+  {
+    "retailer": "Metro-CA"
+  },
+  {
+    "retailer": "Amazon-AE"
+  },
+  {
+    "retailer": "Amazon-DE"
+  },
+  {
+    "retailer": "Amazon-NL"
+  },
+  {
+    "retailer": "Amazon-SA"
+  },
+  {
+    "retailer": "Auchan-PT"
+  },
+  {
+    "retailer": "Auchan-RO"
+  },
+  {
+    "retailer": "Brakes-UK"
+  },
+  {
+    "retailer": "Condis-ES"
+  },
+  {
+    "retailer": "Consum-ES"
+  },
+  {
+    "retailer": "Currys-IE"
+  },
+  {
+    "retailer": "Drakes-AU"
+  },
+  {
+    "retailer": "Frisco-PL"
+  },
+  {
+    "retailer": "Kroger-US"
+  },
+  {
+    "retailer": "Lazada-ID"
+  },
+  {
+    "retailer": "Lazada-MY"
+  },
+  {
+    "retailer": "Shopee-ID"
+  },
+  {
+    "retailer": "Shopee-PH"
+  },
+  {
+    "retailer": "Shopee-SG"
+  },
+  {
+    "retailer": "Smyths-UK"
+  },
+  {
+    "retailer": "Superdrug"
+  },
+  {
+    "retailer": "Target-US"
+  },
+  {
+    "retailer": "Willys-SE"
+  },
+  {
+    "retailer": "Allegro-PL"
+  },
+  {
+    "retailer": "Caprabo-ES"
+  },
+  {
+    "retailer": "Dillons-US"
+  },
+  {
+    "retailer": "LazMall-VN"
+  },
+  {
+    "retailer": "MasYmas-ES"
+  },
+  {
+    "retailer": "MaxiZoo-DK"
+  },
+  {
+    "retailer": "MaxiZoo-PL"
+  },
+  {
+    "retailer": "Mueller-DE"
+  },
+  {
+    "retailer": "PetFlow-US"
+  },
+  {
+    "retailer": "Randles-US"
+  },
+  {
+    "retailer": "Sainsburys"
+  },
+  {
+    "retailer": "Staples-US"
+  },
+  {
+    "retailer": "Utkonos-RU"
+  },
+  {
+    "retailer": "Zooplus-FR"
+  },
+  {
+    "retailer": "Zooplus-PL"
+  },
+  {
+    "retailer": "Bon-Preu-ES"
+  },
+  {
+    "retailer": "Delhaize-BE"
+  },
+  {
+    "retailer": "ELeclerc-FR"
+  },
+  {
+    "retailer": "FirstVet-SE"
+  },
+  {
+    "retailer": "FrysFood-US"
+  },
+  {
+    "retailer": "Hipercor-ES"
+  },
+  {
+    "retailer": "Marianos-US"
+  },
+  {
+    "retailer": "Medicanimal"
+  },
+  {
+    "retailer": "Petsmart-CA"
+  },
+  {
+    "retailer": "Rossmann-DE"
+  },
+  {
+    "retailer": "TakeALot-ZA"
+  },
+  {
+    "retailer": "Ahorramas-ES"
+  },
+  {
+    "retailer": "Amazon-Fresh"
+  },
+  {
+    "retailer": "Amazon-Italy"
+  },
+  {
+    "retailer": "Bodystore-NO"
+  },
+  {
+    "retailer": "Carrefour-EU"
+  },
+  {
+    "retailer": "Carrefour-FR"
+  },
+  {
+    "retailer": "Carrefour-KE"
+  },
+  {
+    "retailer": "Countdown-NZ"
+  },
+  {
+    "retailer": "Farmasiet-NO"
+  },
+  {
+    "retailer": "Hiperdino-ES"
+  },
+  {
+    "retailer": "Marshalls-IN"
+  },
+  {
+    "retailer": "MisPichos-AR"
+  },
+  {
+    "retailer": "Pandamart-PK"
+  },
+  {
+    "retailer": "Pandamart-SG"
+  },
+  {
+    "retailer": "Pandamart-TH"
+  },
+  {
+    "retailer": "PetDirect-NZ"
+  },
+  {
+    "retailer": "Petburada-TR"
+  },
+  {
+    "retailer": "PickNSave-US"
+  },
+  {
+    "retailer": "SMmarkets-PH"
+  },
+  {
+    "retailer": "Centralvet-CL"
+  },
+  {
+    "retailer": "CityMarket-US"
+  },
+  {
+    "retailer": "EDostavkya-BY"
+  },
+  {
+    "retailer": "Home-Depot-US"
+  },
+  {
+    "retailer": "Istegelsin-TR"
+  },
+  {
+    "retailer": "Petihtiyac-TR"
+  },
+  {
+    "retailer": "ShopeeMall-SG"
+  },
+  {
+    "retailer": "ShopeeMall-VN"
+  },
+  {
+    "retailer": "Tesco-Ireland"
+  },
+  {
+    "retailer": "ToysCenter-IT"
+  },
+  {
+    "retailer": "Woolworths-AU"
+  },
+  {
+    "retailer": "Chronodrive-FR"
+  },
+  {
+    "retailer": "Master-Of-Malt"
+  },
+  {
+    "retailer": "MigrosSanal-TR"
+  },
+  {
+    "retailer": "SuperPiedra-ES"
+  },
+  {
+    "retailer": "Albert-Heijn-BE"
+  },
+  {
+    "retailer": "Amazon-Fresh-ES"
+  },
+  {
+    "retailer": "AmigosUnited-US"
+  },
+  {
+    "retailer": "Carrefour-FR-BE"
+  },
+  {
+    "retailer": "EuroSupplies-GR"
+  },
+  {
+    "retailer": "Flaschenpost-DE"
+  },
+  {
+    "retailer": "Metro-Quebec-CA"
+  },
+  {
+    "retailer": "Office-Depot-US"
+  },
+  {
+    "retailer": "SuperMasYMas-ES"
+  },
+  {
+    "retailer": "WalmartSuper-MX"
+  },
+  {
+    "retailer": "Instacart-CVS-US"
+  },
+  {
+    "retailer": "Market-Street-US"
+  },
+  {
+    "retailer": "Matthew-Clark-UK"
+  },
+  {
+    "retailer": "SanchezRomero-ES"
+  },
+  {
+    "retailer": "Foodora-Market-FI"
+  },
+  {
+    "retailer": "Ishop-New-World-NZ"
+  },
+  {
+    "retailer": "Rappi-Carrefour-BR"
+  },
+  {
+    "retailer": "AppliancesDirect-UK"
+  },
+  {
+    "retailer": "Bringo-Carrefour-RO"
+  },
+  {
+    "retailer": "Instacart-Costco-CA"
+  },
+  {
+    "retailer": "Instacart-Costco-US"
+  },
+  {
+    "retailer": "Instacart-Kroger-US"
+  },
+  {
+    "retailer": "Instacart-Publix-US"
+  },
+  {
+    "retailer": "SupermercadosMas-ES"
+  },
+  {
+    "retailer": "Instacart-Safeway-US"
+  },
+  {
+    "retailer": "KRuoka-CityMarket-FI"
+  },
+  {
+    "retailer": "PetenKoriatarvike-FI"
+  },
+  {
+    "retailer": "Shipt-Meijer-49341-US"
+  },
+  {
+    "retailer": "Shopee-SuperMarket-MY"
+  },
+  {
+    "retailer": "WalterMartDelivery-PH"
+  },
+  {
+    "retailer": "DunnesStoresGrocery-UK"
+  },
+  {
+    "retailer": "CollectAndGo-Colruyt-BE"
+  },
+  {
+    "retailer": "Lowes-Home-Improvement-US"
+  },
+  {
+    "retailer": "CollectAndGo-Colruyt-FR-BE"
+  },
+  {
+    "retailer": "Instacart-TotalWineANDMore-US"
+  },
+  {
+    "retailer": "AO-UK"
+  },
+  {
+    "retailer": "Dia-ES"
+  },
+  {
+    "retailer": "Bestway"
+  },
+  {
+    "retailer": "Coop-NL"
+  },
+  {
+    "retailer": "Bilka-DK"
+  },
+  {
+    "retailer": "Carrs-US"
+  },
+  {
+    "retailer": "Kmart-AU"
+  },
+  {
+    "retailer": "Lisek-PL"
+  },
+  {
+    "retailer": "Shaws-US"
+  },
+  {
+    "retailer": "Voila-CA"
+  },
+  {
+    "retailer": "Amazon-TR"
+  },
+  {
+    "retailer": "Bitiba-DE"
+  },
+  {
+    "retailer": "Costco-AU"
+  },
+  {
+    "retailer": "Haggen-US"
+  },
+  {
+    "retailer": "Meijer-US"
+  },
+  {
+    "retailer": "Naivas-KE"
+  },
+  {
+    "retailer": "Nemlig-DK"
+  },
+  {
+    "retailer": "Shopee-VN"
+  },
+  {
+    "retailer": "Alcampo-ES"
+  },
+  {
+    "retailer": "Bidfood-NL"
+  },
+  {
+    "retailer": "Bidfood-UK"
+  },
+  {
+    "retailer": "Colruyt-BE"
+  },
+  {
+    "retailer": "Gurkerl-AT"
+  },
+  {
+    "retailer": "LazMall-PH"
+  },
+  {
+    "retailer": "Proshop-DK"
+  },
+  {
+    "retailer": "Safeway-US"
+  },
+  {
+    "retailer": "Animates-NZ"
+  },
+  {
+    "retailer": "ArkenZoo-SE"
+  },
+  {
+    "retailer": "Balducci-US"
+  },
+  {
+    "retailer": "Rite-Aid-US"
+  },
+  {
+    "retailer": "ShopRite-US"
+  },
+  {
+    "retailer": "Carrefour-AE"
+  },
+  {
+    "retailer": "EdekaNord-DE"
+  },
+  {
+    "retailer": "Fressnapf-DE"
+  },
+  {
+    "retailer": "JewelOsco-US"
+  },
+  {
+    "retailer": "Rappi-Turbo-BR"
+  },
+  {
+    "retailer": "Star-Market-US"
+  },
+  {
+    "retailer": "Glovo-Auchan-PL"
+  },
+  {
+    "retailer": "Kaupat-Alepa-FI"
+  },
+  {
+    "retailer": "MercadoLibre-AR"
+  },
+  {
+    "retailer": "Yahoo-LOHACO-JP"
+  },
+  {
+    "retailer": "Animed-Direct-UK"
+  },
+  {
+    "retailer": "Doordash-7-11-US"
+  },
+  {
+    "retailer": "Glovo-Express-RO"
+  },
+  {
+    "retailer": "Mercado-Libre-MX"
+  },
+  {
+    "retailer": "Kaupat-Smarket-FI"
+  },
+  {
+    "retailer": "Yahoo-Tanomail-JP"
+  },
+  {
+    "retailer": "Tennents-Direct-UK"
+  },
+  {
+    "retailer": "Doordash-Loblaws-CA"
+  },
+  {
+    "retailer": "United-Wholesale-UK"
+  },
+  {
+    "retailer": "Instacart-Loblaws-CA"
+  },
+  {
+    "retailer": "Pak-N-Save-Online-NZ"
+  },
+  {
+    "retailer": "Rakuten-Rakuten24-JP"
+  },
+  {
+    "retailer": "Noon-AE"
+  },
+  {
+    "retailer": "My-Pet-Warehouse-AU"
+  },
+  {
+    "retailer": "Pet-Circle-AU"
+  },
+  {
+    "retailer": "Delhaize-FR-BE"
+  },
+  {
+    "retailer": "Petvalu-CA"
+  },
+  {
+    "retailer": "ThriftyFoods-CA"
+  },
+  {
+    "retailer": "SuperZoo-CL"
+  },
+  {
+    "retailer": "Club-De-Perrosy-Gatos-CL"
+  },
+  {
+    "retailer": "Laika-CO"
+  },
+  {
+    "retailer": "Olimpica-CO"
+  },
+  {
+    "retailer": "Alza-CZ"
+  },
+  {
+    "retailer": "DM"
+  },
+  {
+    "retailer": "Coolshop-DK"
+  },
+  {
+    "retailer": "Eroski-ES"
+  },
+  {
+    "retailer": "Wolt-Market-FI"
+  },
+  {
+    "retailer": "Zoomalia-FR"
+  },
+  {
+    "retailer": "Notino-UK"
+  },
+  {
+    "retailer": "Jollyes-UK"
+  },
+  {
+    "retailer": "Pet-Supermarket-UK"
+  },
+  {
+    "retailer": "Currys"
+  },
+  {
+    "retailer": "Lookfantastic-UK"
+  },
+  {
+    "retailer": "TimeWS-UK"
+  },
+  {
+    "retailer": "Boots"
+  },
+  {
+    "retailer": "Amazon-Morrisons-UK"
+  },
+  {
+    "retailer": "Delonghi"
+  },
+  {
+    "retailer": "Supervalu"
+  },
+  {
+    "retailer": "Argos-IE"
+  },
+  {
+    "retailer": "Petsy-IN"
+  },
+  {
+    "retailer": "Esselunga-IT"
+  },
+  {
+    "retailer": "Benesse-JP"
+  },
+  {
+    "retailer": "Rakuten-Yoshitsu-JP"
+  },
+  {
+    "retailer": "Jumia-KE"
+  },
+  {
+    "retailer": "Glovo-Marjane-MA"
+  },
+  {
+    "retailer": "PLC-MY"
+  },
+  {
+    "retailer": "Shopee-MY"
+  },
+  {
+    "retailer": "Jumbo-NL"
+  },
+  {
+    "retailer": "Sligro-NL"
+  },
+  {
+    "retailer": "Xtra-PA"
+  },
+  {
+    "retailer": "Fera-PL"
+  },
+  {
+    "retailer": "Carrefour-PL"
+  },
+  {
+    "retailer": "KrakVet-PL"
+  },
+  {
+    "retailer": "Freshful-RO"
+  },
+  {
+    "retailer": "Danube-EN-SA"
+  },
+  {
+    "retailer": "MatHem-SE"
+  },
+  {
+    "retailer": "Amazon-SG"
+  },
+  {
+    "retailer": "Shopee-TH"
+  },
+  {
+    "retailer": "Petmekan-TR"
+  },
+  {
+    "retailer": "Carrefour-TR"
+  },
+  {
+    "retailer": "ThriveMarket-US"
+  },
+  {
+    "retailer": "QFC-US"
+  },
+  {
+    "retailer": "USFoods-US"
+  },
+  {
+    "retailer": "Fred-Meyer-US"
+  },
+  {
+    "retailer": "FreshDirect-US"
+  },
+  {
+    "retailer": "PetSense-US"
+  },
+  {
+    "retailer": "TomThumb-US"
+  },
+  {
+    "retailer": "Doordash-Alberstons-US"
+  },
+  {
+    "retailer": "Checkers-Online-ZA"
+  },
+  {
+    "retailer": "BJs-US"
+  },
+  {
+    "retailer": "Asos-UK"
+  },
+  {
+    "retailer": "Next-UK"
+  },
+  {
+    "retailer": "Zooplus"
+  },
+  {
+    "retailer": "Edeka-DE"
+  },
+  {
+    "retailer": "Flink-NL"
+  },
+  {
+    "retailer": "Jumbo-CL"
+  },
+  {
+    "retailer": "PetXL-NO"
+  },
+  {
+    "retailer": "Zehrs-CA"
+  },
+  {
+    "retailer": "Gerbes-US"
+  },
+  {
+    "retailer": "Kiwoko-ES"
+  },
+  {
+    "retailer": "Lazada-PH"
+  },
+  {
+    "retailer": "Lazada-SG"
+  },
+  {
+    "retailer": "Poiesz-NL"
+  },
+  {
+    "retailer": "Public-CY"
+  },
+  {
+    "retailer": "Barbora-PL"
+  },
+  {
+    "retailer": "Edeka24-DE"
+  },
+  {
+    "retailer": "John-Lewis"
+  },
+  {
+    "retailer": "JustEat-UK"
+  },
+  {
+    "retailer": "MenuLog-AU"
+  },
+  {
+    "retailer": "Provigo-CA"
+  },
+  {
+    "retailer": "Sephora-US"
+  },
+  {
+    "retailer": "Zooplus-DE"
+  },
+  {
+    "retailer": "BMStores-UK"
+  },
+  {
+    "retailer": "Chedraui-MX"
+  },
+  {
+    "retailer": "Lakeland-UK"
+  },
+  {
+    "retailer": "Masoutis-GR"
+  },
+  {
+    "retailer": "Matsmart-FI"
+  },
+  {
+    "retailer": "Pet-Barn-AU"
+  },
+  {
+    "retailer": "UberEats-UK"
+  },
+  {
+    "retailer": "Costco-EN-CA"
+  },
+  {
+    "retailer": "Danube-AR-SA"
+  },
+  {
+    "retailer": "DetskyMir-RU"
+  },
+  {
+    "retailer": "Glencrest-UK"
+  },
+  {
+    "retailer": "Hoogvliet-NL"
+  },
+  {
+    "retailer": "Liverpool-MX"
+  },
+  {
+    "retailer": "Banabi-APP-TR"
+  },
+  {
+    "retailer": "DanMurphys-AU"
+  },
+  {
+    "retailer": "ExtraFoods-CA"
+  },
+  {
+    "retailer": "Loblaws-EN-CA"
+  },
+  {
+    "retailer": "Rappi-Petz-BR"
+  },
+  {
+    "retailer": "Fiksu-Ruoka-FI"
+  },
+  {
+    "retailer": "Hepsiburada-TR"
+  },
+  {
+    "retailer": "Rappi-Turbo-MX"
+  },
+  {
+    "retailer": "SantaIsabel-CL"
+  },
+  {
+    "retailer": "Sklavenitis-GR"
+  },
+  {
+    "retailer": "DiaMinipreco-PT"
+  },
+  {
+    "retailer": "JeanCoutu-EN-CA"
+  },
+  {
+    "retailer": "Natural-Life-AR"
+  },
+  {
+    "retailer": "ApplianceCity-UK"
+  },
+  {
+    "retailer": "Rappi-Carulla-CO"
+  },
+  {
+    "retailer": "Metro-Quebec-FR-CA"
+  },
+  {
+    "retailer": "Shipt-HEB-78414-US"
+  },
+  {
+    "retailer": "Sams-Club-Pickup-US"
+  },
+  {
+    "retailer": "DoorDash-Dashmart-US"
+  },
+  {
+    "retailer": "UberEats-Woolworths-AU"
+  },
+  {
+    "retailer": "Shopee-Mall-Coke-Store-MY"
+  },
+  {
+    "retailer": "Shopee-Mall-Coke-Store-SG"
+  },
+  {
+    "retailer": "Kaufland-DE"
+  },
+  {
+    "retailer": "Nana-APP-SA"
+  },
+  {
+    "retailer": "Getir-APP-UK"
+  },
+  {
+    "retailer": "Countdown-APP-NZ"
+  },
+  {
+    "retailer": "Woolworths-APP-AU"
+  },
+  {
+    "retailer": "Bringmeister-APP-DE"
+  },
+  {
+    "retailer": "Iga-CA"
+  },
+  {
+    "retailer": "GrabMart-PH"
+  },
+  {
+    "retailer": "Tractor-Supply-US"
+  },
+  {
+    "retailer": "Picnic-DE"
+  },
+  {
+    "retailer": "Bolt-APP-RO"
+  },
+  {
+    "retailer": "Heineken-UK"
+  },
+  {
+    "retailer": "Tiki-APP-VN"
+  },
+  {
+    "retailer": "Jumia-APP-MA"
+  },
+  {
+    "retailer": "Jush!-APP-PL"
+  },
+  {
+    "retailer": "Ocado-APP-UK"
+  },
+  {
+    "retailer": "Sezamo-APP-RO"
+  },
+  {
+    "retailer": "Shopee-APP-SG"
+  },
+  {
+    "retailer": "Shopee-APP-VN"
+  },
+  {
+    "retailer": "Supertails-IN"
+  },
+  {
+    "retailer": "Cheetay-APP-PK"
+  },
+  {
+    "retailer": "Pandamart-APP-PH"
+  },
+  {
+    "retailer": "Budget-Pet-APP-AU"
+  },
+  {
+    "retailer": "Quick-Market-APP-SA"
+  },
+  {
+    "retailer": "Instacart-Walmart-US"
+  },
+  {
+    "retailer": "Glovo-SuperGlovo-APP-ES"
+  },
+  {
+    "retailer": "Central-Market-US"
+  },
+  {
+    "retailer": "Kings-Food-Market-US"
+  },
+  {
+    "retailer": "Candy-Warehouse-US"
+  },
+  {
+    "retailer": "UberEats-Walgreens-US"
+  },
+  {
+    "retailer": "Doordash-Walgreens-US"
+  },
+  {
+    "retailer": "Andronicos-US"
+  },
+  {
+    "retailer": "Blibli-APP-ID"
+  },
+  {
+    "retailer": "StopAndShop-US"
+  },
+  {
+    "retailer": "AlfaGift-APP-ID"
+  },
+  {
+    "retailer": "Glovo-Marjane-APP-MA"
+  },
+  {
+    "retailer": "E-Fast-CR"
+  },
+  {
+    "retailer": "Tesco-APP-UK"
+  },
+  {
+    "retailer": "Intermarche-Drive-FR"
+  },
+  {
+    "retailer": "Deliveroo-Coop-APP-UK"
+  },
+  {
+    "retailer": "Deliveroo-Sainsburys-APP-UK"
+  },
+  {
+    "retailer": "Gopuff-US"
+  }
+]

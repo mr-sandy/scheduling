@@ -76,7 +76,7 @@ function generateOperations(client) {
         client.categories.forEach((category) => {
             ops.push({
                 id: (id++).toString(),
-                operationType: "search",
+                operationType: "category",
                 client: client.id,
                 retailer: retailer,
                 schedule: "daily",

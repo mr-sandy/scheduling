@@ -1,29 +1,29 @@
 import { Autocomplete, TextField } from "@mui/material";
 
-const options = [
+export const operationTypes: { label: string; value: string }[] = [
   { label: "Category", value: "category" },
   { label: "Search", value: "search" },
   { label: "Detail", value: "detail" },
   { label: "Review", value: "review" },
 ];
 
-function findOptions(values: string[]) {
-  return options.filter((option) => values.includes(option.value));
+function findOperationTypes(values: string[]) {
+  return operationTypes.filter((option) => values.includes(option.value));
 }
 
 export default function OperationTypeFilter({
-  operationTypes,
+  value,
   onChange,
 }: {
-  operationTypes: string[];
+  value: string[];
   onChange: (age: string[]) => void;
 }) {
   return (
     <Autocomplete
       multiple
-      options={options}
+      options={operationTypes}
       getOptionLabel={(option) => option.label}
-      value={findOptions(operationTypes)}
+      value={findOperationTypes(value)}
       onChange={(event, newValue) => onChange(newValue.map((v) => v.value))}
       filterSelectedOptions
       renderInput={(params) => (

@@ -30,6 +30,7 @@ function handleGetList(req, res) {
     const [operations, count] = operationsRepository.getList({
         operationTypes: req.query.operationType,
         rowsPerPage: parseInt(req.query.rowsPerPage),
+        page: parseInt(req.query.page),
     });
     (0, utils_1.negotiate)(res, { operations, count }, "operations");
 }

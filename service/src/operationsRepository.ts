@@ -4,17 +4,18 @@ import { operations } from "./operations";
 export function getList(query: {
   operationTypes: string[];
   rowsPerPage: number;
+  page: number;
 }): [Operation[], number] {
-  return [
-    operations
-      .filter(
-        (operation) =>
-          query.operationTypes === undefined ||
-          query.operationTypes.includes(operation.operationType)
-      )
-      .slice(0, query.rowsPerPage),
-    operations.length,
-  ];
+  const start = query.page * query.rowsPerPage;
+  const end = start + query.rowsPerPage;
+
+  const filtered = operations.filter(
+    (operation) =>
+      query.operationTypes === undefined ||
+      query.operationTypes.includes(operation.operationType)
+  );
+
+  return [filtered.slice(start, end), filtered.length];
 }
 
 export function getItem(bomId: string) {

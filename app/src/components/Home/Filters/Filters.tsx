@@ -25,7 +25,7 @@ export function Filters() {
       </Typography>
       <Stack spacing={3}>
         <OperationTypeFilter
-          operationTypes={operationTypes}
+          value={operationTypes}
           onChange={(value) => setOperationTypes(value)}
         />
         <Button

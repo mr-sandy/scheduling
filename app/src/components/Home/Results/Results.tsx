@@ -1,232 +1,41 @@
 import * as React from "react";
-import { alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import TableSortLabel from "@mui/material/TableSortLabel";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import DeleteIcon from "@mui/icons-material/Delete";
-import FilterListIcon from "@mui/icons-material/FilterList";
-import { visuallyHidden } from "@mui/utils";
 import { useSearchParams } from "react-router-dom";
 import { Operation } from "../../../../../common/types";
 import * as operationsService from "../../../services/operationsService";
+import { EnhancedTableToolbar } from "./EnhancedTableToolbar";
+import { EnhancedTableHead } from "./EnhancedTableHead";
+import { Chip } from "@mui/material";
+import { operationTypes } from "../Filters/OperationTypeFilter";
 
-function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
-}
+export type Order = "asc" | "desc";
 
-type Order = "asc" | "desc";
-
-function getComparator<Key extends keyof any>(
-  order: Order,
-  orderBy: Key
-): (
-  a: { [key in Key]: number | string },
-  b: { [key in Key]: number | string }
-) => number {
-  return order === "desc"
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-// Since 2020 all major browsers ensure sort stability with Array.prototype.sort().
-// stableSort() brings sort stability to non-modern browsers (notably IE11). If you
-// only support modern browsers you can replace stableSort(exampleArray, exampleComparator)
-// with exampleArray.slice().sort(exampleComparator)
-function stableSort<T>(
-  array: readonly T[],
-  comparator: (a: T, b: T) => number
-) {
-  const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) {
-      return order;
-    }
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
-}
-
-interface HeadCell {
-  disablePadding: boolean;
-  id: keyof Operation;
-  label: string;
-  numeric: boolean;
-}
-
-const headCells: readonly HeadCell[] = [
-  {
-    id: "id",
-    numeric: false,
-    disablePadding: true,
-    label: "Dessert (100g serving)",
-  },
-  {
-    id: "client",
-    numeric: false,
-    disablePadding: false,
-    label: "Calories",
-  },
-  {
-    id: "retailer",
-    numeric: false,
-    disablePadding: false,
-    label: "Fat (g)",
-  },
-  {
-    id: "operationType",
-    numeric: false,
-    disablePadding: false,
-    label: "Carbs (g)",
-  },
-  {
-    id: "schedule",
-    numeric: false,
-    disablePadding: false,
-    label: "Protein (g)",
-  },
-];
-
-interface EnhancedTableProps {
-  numSelected: number;
-  onRequestSort: (
-    event: React.MouseEvent<unknown>,
-    property: keyof Operation
-  ) => void;
-  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  order: Order;
-  orderBy: string;
-  rowCount: number;
-}
-
-function EnhancedTableHead(props: EnhancedTableProps) {
-  const {
-    onSelectAllClick,
-    order,
-    orderBy,
-    numSelected,
-    rowCount,
-    onRequestSort,
-  } = props;
-  const createSortHandler =
-    (property: keyof Operation) => (event: React.MouseEvent<unknown>) => {
-      onRequestSort(event, property);
-    };
-
+function OperationTypeChip({ operationType }: { operationType: string }) {
   return (
-    <TableHead>
-      <TableRow>
-        <TableCell padding="checkbox">
-          <Checkbox
-            color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{
-              "aria-label": "select all desserts",
-            }}
-          />
-        </TableCell>
-        {headCells.map((headCell) => (
-          <TableCell
-            key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
-            padding={headCell.disablePadding ? "none" : "normal"}
-            sortDirection={orderBy === headCell.id ? order : false}
-          >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : "asc"}
-              onClick={createSortHandler(headCell.id)}
-            >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
-                  {order === "desc" ? "sorted descending" : "sorted ascending"}
-                </Box>
-              ) : null}
-            </TableSortLabel>
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
+    <Chip
+      label={operationTypes.find((o) => o.value === operationType)?.label}
+      size="small"
+      variant="outlined"
+    />
   );
 }
 
-interface EnhancedTableToolbarProps {
-  numSelected: number;
-}
-
-function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
-  const { numSelected } = props;
-
+function ScheduleChip({ schedule }: { schedule: string }) {
   return (
-    <Toolbar
-      sx={{
-        pl: { sm: 2 },
-        pr: { xs: 1, sm: 1 },
-        ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(
-              theme.palette.primary.main,
-              theme.palette.action.activatedOpacity
-            ),
-        }),
-      }}
-    >
-      {numSelected > 0 ? (
-        <Typography
-          sx={{ flex: "1 1 100%" }}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
-        >
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <Typography
-          sx={{ flex: "1 1 100%" }}
-          variant="h6"
-          id="tableTitle"
-          component="div"
-        >
-          Nutrition
-        </Typography>
-      )}
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <FilterListIcon />
-          </IconButton>
-        </Tooltip>
-      )}
-    </Toolbar>
+    <Chip
+      label={schedule}
+      size="small"
+    />
   );
 }
 
@@ -239,20 +48,30 @@ export function Results() {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [searchParams] = useSearchParams();
   const [rows, setRows] = React.useState<Operation[]>([]);
+  const [count, setCount] = React.useState<number>(0);
 
   const operationTypes =
     searchParams.getAll("operationType") || ([] as string[]);
 
+  console.log("searchParams", searchParams.toString());
+
+  React.useEffect(() => {
+    setPage(0);
+    refreshOperations();
+  }, [searchParams.toString()]);
+
   React.useEffect(() => {
     refreshOperations();
-  }, [operationTypes.join(","), rowsPerPage]);
+  }, [rowsPerPage, page]);
 
   const refreshOperations = async () => {
-    const {operations, count} = await operationsService.fetchOperations({
+    const { operations, count } = await operationsService.fetchOperations({
       operationTypes,
       rowsPerPage,
+      page,
     });
     setRows(operations);
+    setCount(count);
   };
 
   const handleRequestSort = (
@@ -312,16 +131,7 @@ export function Results() {
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
-  // const visibleRows = React.useMemo(
-  //   () =>
-  //     stableSort(rows, getComparator(order, orderBy)).slice(
-  //       page * rowsPerPage,
-  //       page * rowsPerPage + rowsPerPage
-  //     ),
-  //   [order, orderBy, page, rowsPerPage]
-  // );
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - count) : 0;
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -339,7 +149,7 @@ export function Results() {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              rowCount={count}
             />
             <TableBody>
               {rows.map((row, index) => {
@@ -374,10 +184,14 @@ export function Results() {
                     >
                       {row.id}
                     </TableCell>
-                    <TableCell align="right">{row.client}</TableCell>
-                    <TableCell align="right">{row.retailer}</TableCell>
-                    <TableCell align="right">{row.operationType}</TableCell>
-                    <TableCell align="right">{row.schedule}</TableCell>
+                    <TableCell align="left">{row.client}</TableCell>
+                    <TableCell align="left">{row.retailer}</TableCell>
+                    <TableCell align="left">
+                      <OperationTypeChip operationType={row.operationType} />
+                    </TableCell>
+                    <TableCell align="left">
+                      <ScheduleChip schedule={row.schedule} />
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -396,7 +210,7 @@ export function Results() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={count}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

@@ -4,15 +4,18 @@ import { Operation } from "../../../common/types";
 export async function fetchOperations({
   operationTypes,
   rowsPerPage,
+  page
 }: {
   operationTypes: string[];
   rowsPerPage: number;
+  page: number;
 }): Promise<{ operations: Operation[]; count: number }> {
   const queryParams = new URLSearchParams();
   operationTypes.forEach((operationType) =>
     queryParams.append("operationType", operationType)
   );
   queryParams.append("rowsPerPage", rowsPerPage.toString());
+  queryParams.append("page", page.toString());
 
   try {
     const res = await axios.get<{ operations: Operation[]; count: number }>(

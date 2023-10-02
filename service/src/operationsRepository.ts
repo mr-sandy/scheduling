@@ -1,29 +1,17 @@
 import { Operation } from "../../common/types";
+import { operations } from "./operations";
 
-export function getList(): Operation[] {
-  return [
-    {
-      id: "1",
-      retailer: "Tesco",
-      client: "Mars UK",
-      schedule: "daily",
-      operationType: "category",
-    } as Operation,
-    {
-      id: "2",
-      retailer: "Amazon-DE",
-      client: "Arla DE",
-      schedule: "daily",
-      operationType: "category",
-    } as Operation,
-    {
-      id: "3",
-      retailer: "Walmart-US",
-      client: "Kelloggs US",
-      schedule: "daily",
-      operationType: "category",
-    } as Operation,
-  ];
+export function getList(query: {
+  operationTypes: string[];
+  rowsPerPage: number;
+}): Operation[] {
+  return operations
+    .filter(
+      (operation) =>
+        query.operationTypes === undefined ||
+        query.operationTypes.includes(operation.operationType)
+    )
+    .slice(0, query.rowsPerPage);
 }
 
 export function getItem(bomId: string) {

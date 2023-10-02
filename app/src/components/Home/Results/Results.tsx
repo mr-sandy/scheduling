@@ -245,10 +245,13 @@ export function Results() {
 
   React.useEffect(() => {
     refreshOperations();
-  }, [operationTypes.join(",") ]);
+  }, [operationTypes.join(","), rowsPerPage]);
 
   const refreshOperations = async () => {
-    const operations = await operationsService.fetchOperations();
+    const operations = await operationsService.fetchOperations({
+      operationTypes,
+      rowsPerPage,
+    });
     setRows(operations);
   };
 
@@ -311,14 +314,14 @@ export function Results() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-  const visibleRows = React.useMemo(
-    () =>
-      stableSort(rows, getComparator(order, orderBy)).slice(
-        page * rowsPerPage,
-        page * rowsPerPage + rowsPerPage
-      ),
-    [order, orderBy, page, rowsPerPage]
-  );
+  // const visibleRows = React.useMemo(
+  //   () =>
+  //     stableSort(rows, getComparator(order, orderBy)).slice(
+  //       page * rowsPerPage,
+  //       page * rowsPerPage + rowsPerPage
+  //     ),
+  //   [order, orderBy, page, rowsPerPage]
+  // );
 
   return (
     <Box sx={{ width: "100%" }}>

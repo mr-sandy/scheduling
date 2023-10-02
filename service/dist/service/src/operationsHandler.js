@@ -27,8 +27,12 @@ exports.handlePut = exports.handleGet = exports.handlePost = exports.handleGetLi
 const operationsRepository = __importStar(require("./operationsRepository"));
 const utils_1 = require("./utils");
 function handleGetList(req, res) {
-    console.log(JSON.stringify(req.query));
-    const operations = operationsRepository.getList();
+    const operationTypes = req.query.operationType;
+    const rowsPerPage = req.query.rowsPerPage;
+    const operations = operationsRepository.getList({
+        operationTypes,
+        rowsPerPage: parseInt(rowsPerPage),
+    });
     (0, utils_1.negotiate)(res, operations, "operations");
 }
 exports.handleGetList = handleGetList;
@@ -44,49 +48,3 @@ function handlePut(req, res) {
     res.sendStatus(200);
 }
 exports.handlePut = handlePut;
-// const bomHandler = {
-//   handleGetList: (req: Request, res: Response) => {
-//     console.log("handleGetList");
-//     res.format({
-//       "application/json": function () {
-//         const retailers = bomRepository.getAll();
-//         res.json(retailers);
-//       },
-//       "text/html": function () {
-//         res.sendFile(
-//           path.join(__dirname, "..", "..", "app", "build", "index.html")
-//         );
-//       },
-//     });
-//   },
-//   handlePost: (req: Request, res: Response) => {
-//     console.log("handlePost");
-//     console.log(
-//       "SAVING SAVING SAVING SAVING SAVING SAVING SAVING SAVING SAVING "
-//     );
-//     res.sendStatus(200);
-//   },
-//   handlePut: (req: Request, res: Response) => {
-//     const { id } = req.params;
-//     const { name, countryCode } = req.body;
-//     const retailer: Retailer = {
-//       id,
-//       name,
-//       countryCode,
-//     };
-//     retailerRepository.add(retailer);
-//     res.json(retailer);
-//   },
-//   handleGet: (req: Request, res: Response) => {
-//     const { id } = req.params;
-//     const { name, countryCode } = req.body;
-//     const retailer: Retailer = {
-//       id,
-//       name,
-//       countryCode,
-//     };
-//     retailerRepository.add(retailer);
-//     res.json(retailer);
-//   },
-// };
-// export default bomHandler;

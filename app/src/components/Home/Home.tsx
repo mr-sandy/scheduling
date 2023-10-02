@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import { OperationsTable } from "./OperationsTable";
-import { Filters } from "./Filters";
+import { Results } from "./Results/Results";
+import { Filters } from "./Filters/Filters";
 
 export function Home() {
   return (
@@ -16,7 +16,7 @@ export function Home() {
           borderRight: 1,
           borderColor: "#e0e0e0",
           height: "calc(100vh - 64px)",
-          width: 300,
+          width: 350,
         }}
       >
         <Filters />
@@ -27,7 +27,7 @@ export function Home() {
           flexGrow: 1,
         }}
       >
-        <OperationsTable />
+        <Results />
       </Box>
     </Box>
   );

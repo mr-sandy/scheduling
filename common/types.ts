@@ -54,3 +54,11 @@ export interface Bom {
   retailers?: RetailerOptions[];
   apps?: RetailerOptions[];
 }
+
+export interface Operation {
+  id: string;
+  client: string;
+  retailer: string;
+  operationType: string;
+  schedule: string;
+}

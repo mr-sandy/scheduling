@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import path from "path";
 import cors from "cors";
 import * as bomHandler from "./bomHandler";
+import * as operationsHandler from "./operationsHandler";
 import hbs from 'hbs';
 
 dotenv.config();
@@ -26,6 +27,8 @@ app.set('views', path.join(appBuidPath));
 hbs.registerHelper('json', function(context) {
   return JSON.stringify(context);
 });
+
+app.get("/operations", operationsHandler.handleGetList);
 
 app.get("/boms", bomHandler.handleGetList);
 app.post("/boms", bomHandler.handlePost);

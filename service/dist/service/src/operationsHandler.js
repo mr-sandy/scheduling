@@ -27,13 +27,11 @@ exports.handlePut = exports.handleGet = exports.handlePost = exports.handleGetLi
 const operationsRepository = __importStar(require("./operationsRepository"));
 const utils_1 = require("./utils");
 function handleGetList(req, res) {
-    const operationTypes = req.query.operationType;
-    const rowsPerPage = req.query.rowsPerPage;
-    const operations = operationsRepository.getList({
-        operationTypes,
-        rowsPerPage: parseInt(rowsPerPage),
+    const [operations, count] = operationsRepository.getList({
+        operationTypes: req.query.operationType,
+        rowsPerPage: parseInt(req.query.rowsPerPage),
     });
-    (0, utils_1.negotiate)(res, operations, "operations");
+    (0, utils_1.negotiate)(res, { operations, count }, "operations");
 }
 exports.handleGetList = handleGetList;
 function handlePost(req, res) {

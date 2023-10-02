@@ -4,14 +4,17 @@ import { operations } from "./operations";
 export function getList(query: {
   operationTypes: string[];
   rowsPerPage: number;
-}): Operation[] {
-  return operations
-    .filter(
-      (operation) =>
-        query.operationTypes === undefined ||
-        query.operationTypes.includes(operation.operationType)
-    )
-    .slice(0, query.rowsPerPage);
+}): [Operation[], number] {
+  return [
+    operations
+      .filter(
+        (operation) =>
+          query.operationTypes === undefined ||
+          query.operationTypes.includes(operation.operationType)
+      )
+      .slice(0, query.rowsPerPage),
+    operations.length,
+  ];
 }
 
 export function getItem(bomId: string) {

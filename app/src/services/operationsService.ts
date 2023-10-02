@@ -5,9 +5,9 @@ export async function fetchOperations({
   operationTypes,
   rowsPerPage,
 }: {
-  operationTypes: string[],
-  rowsPerPage: number,
-}): Promise<Operation[]> {
+  operationTypes: string[];
+  rowsPerPage: number;
+}): Promise<{ operations: Operation[]; count: number }> {
   const queryParams = new URLSearchParams();
   operationTypes.forEach((operationType) =>
     queryParams.append("operationType", operationType)
@@ -15,12 +15,12 @@ export async function fetchOperations({
   queryParams.append("rowsPerPage", rowsPerPage.toString());
 
   try {
-    const res = await axios.get<Operation[]>(
+    const res = await axios.get<{ operations: Operation[]; count: number }>(
       `http://localhost:8080/operations?${queryParams.toString()}`
     );
     return res.data;
   } catch (error) {
     console.log("error", error);
   }
-  return [];
+  return { operations: [], count: 0 };
 }

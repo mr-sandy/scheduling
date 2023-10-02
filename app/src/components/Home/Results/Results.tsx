@@ -248,7 +248,7 @@ export function Results() {
   }, [operationTypes.join(","), rowsPerPage]);
 
   const refreshOperations = async () => {
-    const operations = await operationsService.fetchOperations({
+    const {operations, count} = await operationsService.fetchOperations({
       operationTypes,
       rowsPerPage,
     });

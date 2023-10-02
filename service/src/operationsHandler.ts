@@ -3,14 +3,12 @@ import * as operationsRepository from "./operationsRepository";
 import { negotiate } from "./utils";
 
 export function handleGetList(req: Request, res: Response) {
-  const operationTypes = req.query.operationType as string[];
-  const rowsPerPage = req.query.rowsPerPage as string;
-  const operations = operationsRepository.getList({
-    operationTypes,
-    rowsPerPage: parseInt(rowsPerPage),
+  const [operations, count] = operationsRepository.getList({
+    operationTypes: req.query.operationType as string[],
+    rowsPerPage: parseInt(req.query.rowsPerPage as string),
   });
 
-  negotiate(res, operations, "operations");
+  negotiate(res, { operations, count }, "operations");
 }
 
 export function handlePost(req: Request, res: Response) {

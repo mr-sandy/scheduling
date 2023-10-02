@@ -8,9 +8,9 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useEffect } from "react";
-import { fetchBoms } from "../../services/bomService";
-import { useBoms, useBomsDispatch } from "../BomListProvider";
-import { RetrieveBoms } from "../../state/bomList/bomListActions";
+import { fetchBoms } from "../../../services/bomService";
+import { useBoms, useBomsDispatch } from "../../BomListProvider";
+import { RetrieveBoms } from "../../../state/bomList/bomListActions";
 
 export default function BomList() {
   const [page, setPage] = React.useState(0);

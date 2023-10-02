@@ -1,71 +1,37 @@
-import { Box, CssBaseline } from "@mui/material";
-import { BomList } from "./BomList";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import { Navbar } from "./Navbar";
-import { ThemeProvider } from "@emotion/react";
-import { theme } from "../theme";
-import { BomListProvider } from "./BomListProvider";
-import {
-  CreateBom,
-  Summary,
-  Retailers,
-  Apps,
-  Fundamentals,
-  Scorecards,
-  PublicationService,
-  Review,
-  GatherRequirements,
-  OtherRequirements,
-} from "./CreateBom";
-import { BomProvider } from "./BomProvider";
-import { RetailerListProvider } from "./RetailerListProvider";
+import * as React from "react";
+import { MyAppBar } from "./MyAppBar";
+import { DrawerHeader, MyDrawer } from "./MyDrawer";
+import { ThemeProvider, Box, CssBaseline, Typography } from "@mui/material";
+import { myTheme } from "./myTheme";
 
-function App() {
+export default function App() {
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <ThemeProvider theme={theme}>
-      <RetailerListProvider>
-        <BomListProvider>
-          <BomProvider>
-            <Router>
-              <Box>
-                <CssBaseline />
-                <Navbar />
-                <Routes>
-                  <Route index element={<Navigate to="/boms" />} />
-                  <Route path="boms" element={<BomList />} />
-                  <Route path="boms/create" element={<CreateBom />}>
-                    <Route index element={<Navigate to="summary" />} />
-                    <Route path="summary" element={<Summary />} />
-                    <Route path="retailers" element={<Retailers />} />
-                    <Route path="apps" element={<Apps />} />
-                    <Route path="fundamentals" element={<Fundamentals />} />
-                    <Route path="scorecards" element={<Scorecards />} />
-                    <Route
-                      path="publication-service"
-                      element={<PublicationService />}
-                    />
-                    <Route
-                      path="other-requirements"
-                      element={<OtherRequirements />}
-                    />
-                    <Route
-                      path="gather-requirements"
-                      element={<GatherRequirements />}
-                    />
-                    <Route path="review" element={<Review />} />
-                  </Route>
-                </Routes>
-              </Box>
-            </Router>
-          </BomProvider>
-        </BomListProvider>
-      </RetailerListProvider>
+    <ThemeProvider theme={myTheme}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <MyAppBar open={open} handleDrawerOpen={() => setOpen(true)} />
+        <MyDrawer open={open} handleDrawerClose={() => setOpen(false)} />
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
+          <Typography paragraph>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
+            dolor purus non enim praesent elementum facilisis leo vel. Risus at
+            ultrices mi tempus imperdiet. Semper risus in hendrerit gravida
+            rutrum quisque non tellus. Convallis convallis tellus id interdum
+            velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean
+            sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
+            integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
+            eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
+            quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
+            vivamus at augue. At augue eget arcu dictum varius duis at
+            consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
+            donec massa sapien faucibus et molestie ac.
+          </Typography>
+        </Box>
+      </Box>
     </ThemeProvider>
   );
 }
-export default App;

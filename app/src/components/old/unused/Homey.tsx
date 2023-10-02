@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import BomList from "./OldBomList";
-import { BomListProvider } from "../BomListProvider";
+import { BomListProvider } from "../../BomListProvider";
 import { Home } from "@mui/icons-material";
 
 function Homey() {

@@ -1,4 +1,3 @@
-import * as React from "react";
 import MuiDrawer from "@mui/material/Drawer";
 import { useTheme } from "@mui/material/styles";
 import { styled, Theme, CSSObject } from "@mui/material/styles";

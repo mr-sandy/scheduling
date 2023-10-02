@@ -21,7 +21,7 @@ export default function App() {
           <CssBaseline />
           <MyAppBar open={open} handleDrawerOpen={() => setOpen(true)} />
           <MyDrawer open={open} handleDrawerClose={() => setOpen(false)} />
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Box component="main" sx={{ flexGrow: 1 }}>
             <DrawerHeader />
             <Routes>
               <Route index element={<Navigate to="/scheduling" />} />

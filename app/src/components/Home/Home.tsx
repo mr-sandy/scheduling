@@ -12,18 +12,21 @@ export function Home() {
     >
       <Box
         sx={{
-          padding: 3,
-          borderRight: 1,
+          padding: 2,
+          borderRight: 0,
           borderColor: "#e0e0e0",
           height: "calc(100vh - 64px)",
           width: 350,
+          boxShadow: 3,
         }}
       >
         <Filters />
       </Box>
       <Box
         sx={{
-          padding: 3,
+          paddingTop: 2,
+          paddingLeft: 3,
+          paddingRight: 3,
           flexGrow: 1,
         }}
       >

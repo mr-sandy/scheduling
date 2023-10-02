@@ -6,7 +6,8 @@ function getList(query) {
     const start = query.page * query.rowsPerPage;
     const end = start + query.rowsPerPage;
     const filtered = operations_1.operations.filter((operation) => query.operationTypes === undefined ||
-        query.operationTypes.includes(operation.operationType));
+        query.operationTypes.includes(operation.operationType)).filter((operation) => query.retailers === undefined ||
+        query.retailers.includes(operation.retailer));
     return [filtered.slice(start, end), filtered.length];
 }
 exports.getList = getList;

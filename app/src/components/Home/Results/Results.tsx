@@ -15,7 +15,7 @@ import { Operation } from "../../../../../common/types";
 import * as operationsService from "../../../services/operationsService";
 import { EnhancedTableToolbar } from "./EnhancedTableToolbar";
 import { EnhancedTableHead } from "./EnhancedTableHead";
-import { Chip } from "@mui/material";
+import { Avatar, Chip } from "@mui/material";
 import { operationTypes } from "../Filters/OperationTypeFilter";
 
 export type Order = "asc" | "desc";
@@ -31,12 +31,7 @@ function OperationTypeChip({ operationType }: { operationType: string }) {
 }
 
 function ScheduleChip({ schedule }: { schedule: string }) {
-  return (
-    <Chip
-      label={schedule}
-      size="small"
-    />
-  );
+  return <Chip label={schedule} size="small" />;
 }
 
 export function Results() {
@@ -45,7 +40,7 @@ export function Results() {
   const [selected, setSelected] = React.useState<readonly string[]>([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [searchParams] = useSearchParams();
   const [rows, setRows] = React.useState<Operation[]>([]);
   const [count, setCount] = React.useState<number>(0);
@@ -53,7 +48,8 @@ export function Results() {
   const operationTypes =
     searchParams.getAll("operationType") || ([] as string[]);
 
-  console.log("searchParams", searchParams.toString());
+    const retailers =
+    searchParams.getAll("retailer") || ([] as string[]);
 
   React.useEffect(() => {
     setPage(0);
@@ -67,6 +63,7 @@ export function Results() {
   const refreshOperations = async () => {
     const { operations, count } = await operationsService.fetchOperations({
       operationTypes,
+      retailers,
       rowsPerPage,
       page,
     });
@@ -189,6 +186,7 @@ export function Results() {
                     <TableCell align="left">
                       <OperationTypeChip operationType={row.operationType} />
                     </TableCell>
+                    <TableCell align="left">{row.searchTerm || row.category || row.productId }</TableCell>
                     <TableCell align="left">
                       <ScheduleChip schedule={row.schedule} />
                     </TableCell>

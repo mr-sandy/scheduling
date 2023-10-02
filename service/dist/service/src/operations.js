@@ -6,7 +6,7 @@ exports.clients = [
     {
         id: "Mars UK",
         searchTerms: ["snickers", "mars", "twix"],
-        categories: ["chocolate", "candy", "sweets", "snacks", "bars"],
+        categories: ["Chocolate", "Candy", "Sweets", "Snacks", "Bars"],
         retailers: ["Tesco", "Sainsburys", "Asda", "Morrisons"],
         productIds: [
             "123",
@@ -31,14 +31,14 @@ exports.clients = [
             "sprite",
             "dr pepper",
         ],
-        categories: ["soft drinks", "soda", "fizzy drinks", "pop", "cola", "coke"],
+        categories: ["Soft Drinks", "Soda", "Fizzy Drinks", "Pop", "Cola", "Coke"],
         retailers: ["Tesco", "Sainsburys", "Asda", "Morrisons"],
         productIds: ["121251", "567889", "789123", "123456", "456789", "789123"],
     },
     {
         id: "Arla UK",
         searchTerms: ["milk", "cheese", "butter", "yoghurt", "cream", "dairy"],
-        categories: ["dairy", "cheese", "milk", "yoghurt", "cream", "butter"],
+        categories: ["Dairy", "Cheese", "Milk", "Yoghurt", "Cream", "Butter"],
         retailers: [
             "Tesco",
             "Sainsburys",

@@ -10,7 +10,7 @@ import { Operation } from "../../../../../common/types";
 import { Order } from "./Results";
 
 interface HeadCell {
-  id: keyof Operation;
+  id: keyof Operation | "parameters";
   label: string;
 }
 
@@ -30,6 +30,10 @@ export const headCells: readonly HeadCell[] = [
   {
     id: "operationType",
     label: "Operation Type",
+  },
+  {
+    id: "parameters",
+    label: "Parameters",
   },
   {
     id: "schedule",
@@ -87,7 +91,11 @@ export function EnhancedTableHead(props: EnhancedTableProps) {
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
-              onClick={createSortHandler(headCell.id)}
+              onClick={
+                headCell.id !== "parameters"
+                  ? createSortHandler(headCell.id)
+                  : () => {}
+              }
             >
               {headCell.label}
               {orderBy === headCell.id ? (

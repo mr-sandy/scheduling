@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import OperationTypeFilter from "./OperationTypeFilter";
+import RetailerFilter from "./RetailerFilter";
 import { useSearchParams } from "react-router-dom";
 
 export function Filters() {
@@ -10,8 +11,15 @@ export function Filters() {
     searchParams.getAll("operationType") || ([] as string[])
   );
 
+  const [retailers, setRetailers] = React.useState(
+    searchParams.getAll("retailer") || ([] as string[])
+  );
+
   function handleFilterClick() {
-    setSearchParams({ operationType: operationTypes });
+    setSearchParams({
+      operationType: operationTypes,
+      retailer: retailers,
+    });
   }
 
   return (
@@ -27,6 +35,10 @@ export function Filters() {
         <OperationTypeFilter
           value={operationTypes}
           onChange={(value) => setOperationTypes(value)}
+        />{" "}
+        <RetailerFilter
+          value={retailers}
+          onChange={(value) => setRetailers(value)}
         />
         <Button
           variant="outlined"

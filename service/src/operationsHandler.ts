@@ -5,6 +5,7 @@ import { negotiate } from "./utils";
 export function handleGetList(req: Request, res: Response) {
   const [operations, count] = operationsRepository.getList({
     operationTypes: req.query.operationType as string[],
+    retailers: req.query.retailer as string[],
     rowsPerPage: parseInt(req.query.rowsPerPage as string),
     page: parseInt(req.query.page as string),
   });

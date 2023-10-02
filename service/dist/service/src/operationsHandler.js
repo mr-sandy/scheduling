@@ -29,6 +29,7 @@ const utils_1 = require("./utils");
 function handleGetList(req, res) {
     const [operations, count] = operationsRepository.getList({
         operationTypes: req.query.operationType,
+        retailers: req.query.retailer,
         rowsPerPage: parseInt(req.query.rowsPerPage),
         page: parseInt(req.query.page),
     });

@@ -3,9 +3,14 @@ import { Box } from "@mui/material";
 import { Results } from "./Results/Results";
 import { Filters } from "./Filters/Filters";
 import { CreateOperationsDialogue } from "./CreateOperationsDialogue";
+import { useSearchParams } from "react-router-dom";
 
 export function Home() {
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [searchParams] = useSearchParams();
+  const defaultClient = searchParams.get("client") || "";
+  const defaultRetailer = searchParams.get("retailer") || "";
+  const defaultOperationType = searchParams.get("operationType") || "";
 
   return (
     <Box
@@ -40,7 +45,9 @@ export function Home() {
         <CreateOperationsDialogue
           open={showModal}
           handleClose={() => setShowModal(false)}
-          defaultClient="Mars UK"
+          defaultClient={defaultClient}
+          defaultRetailer={defaultRetailer}
+          defaultOperationType={defaultOperationType}
         />
       )}
     </Box>

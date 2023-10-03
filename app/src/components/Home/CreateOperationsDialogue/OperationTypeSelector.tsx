@@ -1,16 +1,11 @@
 import { Autocomplete, TextField } from "@mui/material";
-
-const clients: { label: string; value: string }[] = [
-  { label: "Mars UK", value: "Mars UK" },
-  { label: "Coke UK", value: "Coke UK" },
-  { label: "Arla UK", value: "Arla UK" },
-];
+import { operationTypes } from "../Filters/OperationTypeFilter";
 
 function findOperationTypes(value: string) {
-  return clients.find((option) => value === option.value);
+  return operationTypes.find((option) => value === option.value);
 }
 
-export default function ClientSelector({
+export default function OperationTypeSelector({
   value,
   onChange,
 }: {
@@ -19,13 +14,13 @@ export default function ClientSelector({
 }) {
   return (
     <Autocomplete
-      id="client-selector"
-      options={clients}
+      id="operation-type-selector"
+      options={operationTypes}
       getOptionLabel={(option) => option.label}
       value={findOperationTypes(value)}
       onChange={(event, newValue) => onChange(newValue?.value || "")}
       filterSelectedOptions
-      renderInput={(params) => <TextField {...params} label="Client" />}
+      renderInput={(params) => <TextField {...params} label="Operation Type" />}
     />
   );
 }

@@ -29,7 +29,7 @@ export const headCells: readonly HeadCell[] = [
   },
   {
     id: "operationType",
-    label: "Operation Type",
+    label: "Type",
   },
   {
     id: "parameters",

@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Box } from "@mui/material";
 import { Results } from "./Results/Results";
 import { Filters } from "./Filters/Filters";
+import { CreateOperationsDialogue } from "./CreateOperationsDialogue";
 
 export function Home() {
+  const [showModal, setShowModal] = useState<boolean>(false);
+
   return (
     <Box
       sx={{
@@ -30,8 +34,15 @@ export function Home() {
           flexGrow: 1,
         }}
       >
-        <Results />
+        <Results onCreateClick={() => setShowModal(true)} />
       </Box>
+      {showModal && (
+        <CreateOperationsDialogue
+          open={showModal}
+          handleClose={() => setShowModal(false)}
+          defaultClient="Mars UK"
+        />
+      )}
     </Box>
   );
 }

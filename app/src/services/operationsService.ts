@@ -4,11 +4,13 @@ import { Operation } from "../../../common/types";
 export async function fetchOperations({
   operationTypes,
   retailers,
+  clients,
   rowsPerPage,
   page,
 }: {
   operationTypes: string[];
   retailers: string[];
+  clients: string[];
   rowsPerPage: number;
   page: number;
 }): Promise<{ operations: Operation[]; count: number }> {
@@ -17,6 +19,7 @@ export async function fetchOperations({
     queryParams.append("operationType", operationType)
   );
   retailers.forEach((retailer) => queryParams.append("retailer", retailer));
+  clients.forEach((client) => queryParams.append("client", client));
   queryParams.append("rowsPerPage", rowsPerPage.toString());
   queryParams.append("page", page.toString());
 

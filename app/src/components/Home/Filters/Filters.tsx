@@ -3,6 +3,7 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import OperationTypeFilter from "./OperationTypeFilter";
 import RetailerFilter from "./RetailerFilter";
 import { useSearchParams } from "react-router-dom";
+import ClientFilter from "./ClientFilter";
 
 export function Filters() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,10 +16,15 @@ export function Filters() {
     searchParams.getAll("retailer") || ([] as string[])
   );
 
+  const [clients, setClients] = React.useState(
+    searchParams.getAll("client") || ([] as string[])
+  );
+
   function handleFilterClick() {
     setSearchParams({
       operationType: operationTypes,
       retailer: retailers,
+      client: clients,
     });
   }
 
@@ -32,21 +38,22 @@ export function Filters() {
         Filters
       </Typography>
       <Stack spacing={3}>
-        <OperationTypeFilter
-          value={operationTypes}
-          onChange={(value) => setOperationTypes(value)}
-        />{" "}
+        <ClientFilter value={clients} onChange={(value) => setClients(value)} />
         <RetailerFilter
           value={retailers}
           onChange={(value) => setRetailers(value)}
         />
+        <OperationTypeFilter
+          value={operationTypes}
+          onChange={(value) => setOperationTypes(value)}
+        />{" "}
         <Button
           variant="outlined"
           size="large"
           color="secondary"
           onClick={() => handleFilterClick()}
         >
-          Apply filter
+          Apply
         </Button>
       </Stack>
     </Box>

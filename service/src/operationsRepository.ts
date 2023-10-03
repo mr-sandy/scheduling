@@ -4,6 +4,7 @@ import { operations } from "./operations";
 export function getList(query: {
   operationTypes: string[];
   retailers: string[];
+  clients: string[];
   rowsPerPage: number;
   page: number;
 }): [Operation[], number] {
@@ -18,6 +19,10 @@ export function getList(query: {
     (operation) =>
       query.retailers === undefined ||
       query.retailers.includes(operation.retailer)
+  ).filter(
+    (operation) =>
+      query.clients === undefined ||
+      query.clients.includes(operation.client)
   );
 
   return [filtered.slice(start, end), filtered.length];

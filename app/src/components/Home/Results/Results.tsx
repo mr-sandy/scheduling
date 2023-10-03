@@ -17,6 +17,7 @@ import { EnhancedTableToolbar } from "./EnhancedTableToolbar";
 import { EnhancedTableHead } from "./EnhancedTableHead";
 import { Avatar, Chip } from "@mui/material";
 import { operationTypes } from "../Filters/OperationTypeFilter";
+import { CreateOperationsDialogue } from "../CreateOperationsDialogue";
 
 export type Order = "asc" | "desc";
 
@@ -34,7 +35,7 @@ function ScheduleChip({ schedule }: { schedule: string }) {
   return <Chip label={schedule} size="small" />;
 }
 
-export function Results() {
+export function Results({ onCreateClick }: { onCreateClick: () => void }) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof Operation>("retailer");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
@@ -48,8 +49,9 @@ export function Results() {
   const operationTypes =
     searchParams.getAll("operationType") || ([] as string[]);
 
-    const retailers =
-    searchParams.getAll("retailer") || ([] as string[]);
+  const retailers = searchParams.getAll("retailer") || ([] as string[]);
+
+  const clients = searchParams.getAll("client") || ([] as string[]);
 
   React.useEffect(() => {
     setPage(0);
@@ -64,6 +66,7 @@ export function Results() {
     const { operations, count } = await operationsService.fetchOperations({
       operationTypes,
       retailers,
+      clients,
       rowsPerPage,
       page,
     });
@@ -133,7 +136,10 @@ export function Results() {
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar
+          numSelected={selected.length}
+          onCreateClick={onCreateClick}
+        />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -174,6 +180,7 @@ export function Results() {
                       />
                     </TableCell>
                     <TableCell
+                      hidden={true}
                       component="th"
                       id={labelId}
                       scope="row"
@@ -186,7 +193,9 @@ export function Results() {
                     <TableCell align="left">
                       <OperationTypeChip operationType={row.operationType} />
                     </TableCell>
-                    <TableCell align="left">{row.searchTerm || row.category || row.productId }</TableCell>
+                    <TableCell align="left">
+                      {row.searchTerm || row.category || row.productId}
+                    </TableCell>
                     <TableCell align="left">
                       <ScheduleChip schedule={row.schedule} />
                     </TableCell>

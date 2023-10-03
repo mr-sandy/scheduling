@@ -3,7 +3,7 @@ import { Operation } from "../../common/types";
 let id = 1;
 export const clients = [
   {
-    id: "Mars UK",
+    id: "marswholesale-uk",
     searchTerms: ["snickers", "mars", "twix"],
     categories: ["Chocolate", "Candy", "Sweets", "Snacks", "Bars"],
     retailers: ["Tesco", "Sainsburys", "Asda", "Morrisons"],
@@ -21,7 +21,7 @@ export const clients = [
     ],
   },
   {
-    id: "Coke UK",
+    id: "cocacola-retail-uk",
     searchTerms: [
       "coke",
       "diet coke",
@@ -35,7 +35,7 @@ export const clients = [
     productIds: ["121251", "567889", "789123", "123456", "456789", "789123"],
   },
   {
-    id: "Arla UK",
+    id: "arla-uk",
     searchTerms: ["milk", "cheese", "butter", "yoghurt", "cream", "dairy"],
     categories: ["Dairy", "Cheese", "Milk", "Yoghurt", "Cream", "Butter"],
     retailers: [

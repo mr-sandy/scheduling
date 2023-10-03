@@ -1,17 +1,6 @@
 import { Autocomplete, TextField } from "@mui/material";
-
-const retailers: { label: string; value: string }[] = [
-  { label: "Tesco", value: "Tesco" },
-  { label: "Sainsburys", value: "Sainsburys" },
-  { label: "Asda", value: "Asda" },
-  { label: "Morrisons", value: "Morrisons" },
-  { label: "Waitrose", value: "Waitrose" },
-  { label: "Ocado", value: "Ocado" },
-];
-
-function findOperationTypes(value: string) {
-  return retailers.find((retailers) => value === retailers.value);
-}
+import { useRetailers } from "../../RetailerListProvider";
+import { Retailer } from "../../../services/retailersService";
 
 export default function RetailerSelector({
   value,
@@ -20,14 +9,19 @@ export default function RetailerSelector({
   value: string;
   onChange: (age: string) => void;
 }) {
+  const retailers: Retailer[] = useRetailers();
+
+  function findOperationTypes(value: string) {
+    return retailers.find((retailers) => value === retailers.retailerId);
+  }
+
   return (
     <Autocomplete
       id="retailer-selector"
-      
       options={retailers}
-      getOptionLabel={(option) => option.label}
+      getOptionLabel={(option) => option.retailerId}
       value={findOperationTypes(value)}
-      onChange={(event, newValue) => onChange(newValue?.value || "")}
+      onChange={(event, newValue) => onChange(newValue?.retailerId || "")}
       filterSelectedOptions
       renderInput={(params) => <TextField {...params} label="Retailer" />}
     />

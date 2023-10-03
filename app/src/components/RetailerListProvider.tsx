@@ -19,7 +19,7 @@ export function RetailerListProvider({ children }: { children: React.ReactElemen
 }
 
 export function useRetailers() {
-  return useContext(RetailerListContext).filter((r) => r.type === "website");
+  return useContext(RetailerListContext);
 }
 
 export function useApps() {

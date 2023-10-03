@@ -1,17 +1,6 @@
 import { Autocomplete, TextField } from "@mui/material";
-
-const retailers: { label: string; value: string }[] = [
-  { label: "Tesco", value: "Tesco" },
-  { label: "Sainsburys", value: "Sainsburys" },
-  { label: "Asda", value: "Asda" },
-  { label: "Morrisons", value: "Morrisons" },
-  { label: "Waitrose", value: "Waitrose" },
-  { label: "Ocado", value: "Ocado" },
-];
-
-function findOperationTypes(values: string[]) {
-  return retailers.filter((option) => values.includes(option.value));
-}
+import { useRetailers } from "../../RetailerListProvider";
+import { Retailer } from "../../../services/retailersService";
 
 export default function RetailerFilter({
   value,
@@ -20,17 +9,20 @@ export default function RetailerFilter({
   value: string[];
   onChange: (age: string[]) => void;
 }) {
+  const retailers: Retailer[] = useRetailers();
+  function findOperationTypes(values: string[]) {
+    return retailers.filter((option) => values.includes(option.retailerId));
+  }
+
   return (
     <Autocomplete
       multiple
       options={retailers}
-      getOptionLabel={(option) => option.label}
+      getOptionLabel={(option) => option.retailerId}
       value={findOperationTypes(value)}
-      onChange={(event, newValue) => onChange(newValue.map((v) => v.value))}
+      onChange={(event, newValue) => onChange(newValue.map((v) => v.retailerId))}
       filterSelectedOptions
-      renderInput={(params) => (
-        <TextField {...params} label="Retailers" />
-      )}
+      renderInput={(params) => <TextField {...params} label="Retailers" />}
     />
   );
 }

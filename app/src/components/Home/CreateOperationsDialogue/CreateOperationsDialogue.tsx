@@ -3,13 +3,15 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText,
-  TextField,
   DialogActions,
   Button,
-  Box,
 } from "@mui/material";
-import { StartStage, SetSearchTermsStage, ConfirmStage, ReviewStage} from "./stages";
+import {
+  StartStage,
+  SetSearchTermsStage,
+  SetCategoriesStage,
+  ConfirmStage,
+} from "./stages";
 import { Operation } from "../../../../../common/types";
 
 enum Stages {
@@ -37,6 +39,25 @@ function generateOperations(
         schedule,
         searchTerm,
       })) as Operation[];
+
+    case "category":
+      return categories.map((category) => ({
+        client,
+        retailer,
+        operationType,
+        schedule,
+        category,
+      })) as Operation[];
+
+    case "detail":
+      return productIds.map((productId) => ({
+        client,
+        retailer,
+        operationType,
+        schedule,
+        productId,
+      })) as Operation[];
+
     default:
       return [] as Operation[];
   }
@@ -88,6 +109,12 @@ export function CreateOperationsDialogue({
             setSearchTerms={setSearchTerms}
           />
         )}
+        {stage === Stages.SetParams && operationType === "category" && (
+          <SetCategoriesStage
+            categories={categories}
+            setCategories={setCategories}
+          />
+        )}
         {stage === Stages.Confirm && (
           <ConfirmStage
             operations={generateOperations(
@@ -96,7 +123,7 @@ export function CreateOperationsDialogue({
               operationType,
               schedule,
               searchTerms,
-              categories, 
+              categories,
               productIds
             )}
           />

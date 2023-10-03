@@ -1,14 +1,5 @@
 import { Autocomplete, TextField } from "@mui/material";
-
-const clients: { label: string; value: string }[] = [
-  { label: "Mars UK", value: "Mars UK" },
-  { label: "Coke UK", value: "Coke UK" },
-  { label: "Arla UK", value: "Arla UK" },
-];
-
-function findOperationTypes(value: string) {
-  return clients.find((option) => value === option.value);
-}
+import { useClients } from "../../ClientListProvider";
 
 export default function ClientSelector({
   value,
@@ -17,13 +8,18 @@ export default function ClientSelector({
   value: string;
   onChange: (age: string) => void;
 }) {
+  const clients = useClients();
+
+  function findOperationTypes(value: string) {
+    return clients.find((option) => value === option.clientId);
+  }
   return (
     <Autocomplete
       id="client-selector"
       options={clients}
-      getOptionLabel={(option) => option.label}
+      getOptionLabel={(option) => option.clientId}
       value={findOperationTypes(value)}
-      onChange={(event, newValue) => onChange(newValue?.value || "")}
+      onChange={(event, newValue) => onChange(newValue?.clientId || "")}
       filterSelectedOptions
       renderInput={(params) => <TextField {...params} label="Client" />}
     />

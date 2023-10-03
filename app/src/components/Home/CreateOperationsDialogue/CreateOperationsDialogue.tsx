@@ -9,16 +9,37 @@ import {
   Button,
   Box,
 } from "@mui/material";
-import { StartStage } from "./stages";
-import { SetSearchTermsStage } from "./stages/SetSearchTermsStage";
-import { ReviewStage } from "./stages/ReviewStage";
-import { ConfirmStage } from "./stages/ConfirmStage";
+import { StartStage, SetSearchTermsStage, ConfirmStage, ReviewStage} from "./stages";
+import { Operation } from "../../../../../common/types";
 
 enum Stages {
   Start = 0,
   SetParams,
   Confirm,
   Review,
+}
+
+function generateOperations(
+  client: string,
+  retailer: string,
+  operationType: string,
+  schedule: string,
+  searchTerms: string[] = [],
+  categories: string[] = [],
+  productIds: string[] = []
+): Operation[] {
+  switch (operationType) {
+    case "search":
+      return searchTerms.map((searchTerm) => ({
+        client,
+        retailer,
+        operationType,
+        schedule,
+        searchTerm,
+      })) as Operation[];
+    default:
+      return [] as Operation[];
+  }
 }
 
 export function CreateOperationsDialogue({
@@ -34,16 +55,19 @@ export function CreateOperationsDialogue({
   defaultRetailer?: string;
   defaultOperationType?: string;
 }) {
+  const [stage, setStage] = useState<Stages>(Stages.Start);
   const [client, setClient] = useState<string>(defaultClient || "");
   const [retailer, setRetailer] = useState<string>(defaultRetailer || "");
   const [operationType, setOperationType] = useState<string>(
     defaultOperationType || ""
   );
-  const [stage, setStage] = useState<Stages>(Stages.Start);
+  const [schedule, setSchedule] = useState<string>("daily");
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [productIds, setProductIds] = useState<string[]>([]);
 
   return (
-    <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="sm">
+    <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="md">
       <DialogTitle>Create Operations</DialogTitle>
       <DialogContent sx={{ minHeight: 400 }}>
         {stage === Stages.Start && (
@@ -54,12 +78,27 @@ export function CreateOperationsDialogue({
             setRetailer={setRetailer}
             operationType={operationType}
             setOperationType={setOperationType}
+            schedule={schedule}
+            setSchedule={setSchedule}
           />
         )}
         {stage === Stages.SetParams && operationType === "search" && (
           <SetSearchTermsStage
             searchTerms={searchTerms}
             setSearchTerms={setSearchTerms}
+          />
+        )}
+        {stage === Stages.Confirm && (
+          <ConfirmStage
+            operations={generateOperations(
+              client,
+              retailer,
+              operationType,
+              schedule,
+              searchTerms,
+              categories, 
+              productIds
+            )}
           />
         )}
       </DialogContent>

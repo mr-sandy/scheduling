@@ -1,7 +1,8 @@
-import { DialogContentText, Stack, Typography } from "@mui/material";
+import { DialogContentText, Grid, Stack, Typography } from "@mui/material";
 import ClientSelector from "../ClientSelector";
 import RetailerSelector from "../RetailerSelector";
 import OperationTypeSelector from "../OperationTypeSelector";
+import ScheduleSelector from "../ScheduleSelector";
 
 export function StartStage({
   client,
@@ -10,6 +11,8 @@ export function StartStage({
   setRetailer,
   operationType,
   setOperationType,
+  schedule,
+  setSchedule
 }: {
   client: string;
   setClient: (value: string) => void;
@@ -17,22 +20,43 @@ export function StartStage({
   setRetailer: (value: string) => void;
   operationType: string;
   setOperationType: (value: string) => void;
+  schedule: string;
+  setSchedule: (value: string) => void;
 }): JSX.Element {
   return (
-    <Stack spacing={3} paddingTop={1}>
-      <DialogContentText>
-        To subscribe to this website, please enter your email address here. We
-        will send updates occasionally.
-      </DialogContentText>
-      <ClientSelector value={client} onChange={(value) => setClient(value)} />
-      <RetailerSelector
-        value={retailer}
-        onChange={(value) => setRetailer(value)}
-      />
-      <OperationTypeSelector
-        value={operationType}
-        onChange={(value) => setOperationType(value)}
-      />
-    </Stack>
+    <>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <DialogContentText>
+            Specify the client, retailer, operation type and schedule for the
+            new operations.
+          </DialogContentText>
+        </Grid>
+        <Grid item xs={6}>
+          <ClientSelector
+            value={client}
+            onChange={(value) => setClient(value)}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <RetailerSelector
+            value={retailer}
+            onChange={(value) => setRetailer(value)}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <OperationTypeSelector
+            value={operationType}
+            onChange={(value) => setOperationType(value)}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <ScheduleSelector
+            value={schedule}
+            onChange={(value) => setSchedule(value)}
+          />
+        </Grid>
+      </Grid>
+    </>
   );
 }

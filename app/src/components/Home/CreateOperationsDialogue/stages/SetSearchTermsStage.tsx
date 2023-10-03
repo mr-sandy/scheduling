@@ -2,6 +2,7 @@ import {
   Autocomplete,
   Checkbox,
   Chip,
+  DialogContentText,
   IconButton,
   List,
   ListItem,
@@ -21,6 +22,9 @@ export function SetSearchTermsStage({
 }) {
   return (
     <Stack spacing={3} paddingTop={1}>
+      <DialogContentText>
+        Enter one or more search terms for the new operations.
+      </DialogContentText>
       <Autocomplete
         multiple
         id="tags-filled"

@@ -10,6 +10,8 @@ import {
   TableRow,
 } from "@mui/material";
 import { Operation } from "../../../../../../common/types";
+import { OperationTypeChip } from "../../../common/OperationTypeChip";
+import { ScheduleChip } from "../../../common/ScheduleChip";
 
 function createHash(operation: Operation): string {
   return (
@@ -27,7 +29,8 @@ export function ConfirmStage({ operations }: { operations: Operation[] }) {
   return (
     <Stack spacing={3} paddingTop={1}>
       <DialogContentText>
-        You are about to create {operations.length} new operations. Click `Save` to proceed.
+        You are about to create {operations.length} new operations. Click `Save`
+        to proceed.
       </DialogContentText>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -50,13 +53,17 @@ export function ConfirmStage({ operations }: { operations: Operation[] }) {
                   {operation.client}
                 </TableCell>
                 <TableCell>{operation.retailer}</TableCell>
-                <TableCell>{operation.operationType}</TableCell>
+                <TableCell>
+                  <OperationTypeChip operationType={operation.operationType} />
+                </TableCell>
                 <TableCell>
                   {operation.searchTerm ||
                     operation.category ||
                     operation.productId}
                 </TableCell>
-                <TableCell>{operation.schedule}</TableCell>
+                <TableCell>
+                  <ScheduleChip schedule={operation.schedule} />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

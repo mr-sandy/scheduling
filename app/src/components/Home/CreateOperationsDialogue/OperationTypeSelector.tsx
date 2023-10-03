@@ -1,5 +1,5 @@
 import { Autocomplete, TextField } from "@mui/material";
-import { operationTypes } from "../Filters/OperationTypeFilter";
+import { operationTypes } from "../../common/operationTypes";
 
 function findOperationTypes(value: string) {
   return operationTypes.find((option) => value === option.value);

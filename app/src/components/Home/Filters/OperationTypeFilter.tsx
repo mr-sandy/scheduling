@@ -1,11 +1,5 @@
 import { Autocomplete, TextField } from "@mui/material";
-
-export const operationTypes: { label: string; value: string }[] = [
-  { label: "Category", value: "category" },
-  { label: "Search", value: "search" },
-  { label: "Detail", value: "detail" },
-  { label: "Review", value: "review" },
-];
+import { operationTypes } from "../../common/operationTypes";
 
 function findOperationTypes(values: string[]) {
   return operationTypes.filter((option) => values.includes(option.value));

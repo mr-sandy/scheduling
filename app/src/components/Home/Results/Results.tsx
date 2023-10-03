@@ -15,25 +15,10 @@ import { Operation } from "../../../../../common/types";
 import * as operationsService from "../../../services/operationsService";
 import { EnhancedTableToolbar } from "./EnhancedTableToolbar";
 import { EnhancedTableHead } from "./EnhancedTableHead";
-import { Avatar, Chip } from "@mui/material";
-import { operationTypes } from "../Filters/OperationTypeFilter";
-import { CreateOperationsDialogue } from "../CreateOperationsDialogue";
+import { OperationTypeChip } from "../../common/OperationTypeChip";
+import { ScheduleChip } from "../../common/ScheduleChip";
 
 export type Order = "asc" | "desc";
-
-function OperationTypeChip({ operationType }: { operationType: string }) {
-  return (
-    <Chip
-      label={operationTypes.find((o) => o.value === operationType)?.label}
-      size="small"
-      variant="outlined"
-    />
-  );
-}
-
-function ScheduleChip({ schedule }: { schedule: string }) {
-  return <Chip label={schedule} size="small" />;
-}
 
 export function Results({ onCreateClick }: { onCreateClick: () => void }) {
   const [order, setOrder] = React.useState<Order>("asc");

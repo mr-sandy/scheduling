@@ -16,10 +16,6 @@ interface HeadCell {
 
 export const headCells: readonly HeadCell[] = [
   {
-    id: "id",
-    label: "ID",
-  },
-  {
     id: "client",
     label: "Client",
   },
@@ -85,7 +81,6 @@ export function EnhancedTableHead(props: EnhancedTableProps) {
           <TableCell
             key={headCell.id}
             align="left"
-            padding={index === 0 ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel

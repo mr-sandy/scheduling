@@ -1,14 +1,7 @@
 import {
   Autocomplete,
-  Checkbox,
   Chip,
   DialogContentText,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Stack,
   TextField,
 } from "@mui/material";
@@ -31,7 +24,10 @@ export function SetSearchTermsStage({
         freeSolo
         options={[]}
         value={searchTerms}
-        onChange={(event, newValue) => {setSearchTerms(newValue)}}
+        autoSelect={true}
+        onChange={(event, newValue) => {
+          setSearchTerms(newValue);
+        }}
         renderTags={(value: readonly string[], getTagProps) =>
           value.map((option: string, index: number) => (
             <Chip

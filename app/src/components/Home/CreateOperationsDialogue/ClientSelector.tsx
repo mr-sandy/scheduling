@@ -3,7 +3,7 @@ import { useClients } from "../../ClientListProvider";
 
 export default function ClientSelector({
   value,
-  onChange,
+  onChange
 }: {
   value: string;
   onChange: (age: string) => void;
@@ -21,7 +21,12 @@ export default function ClientSelector({
       value={findOperationTypes(value)}
       onChange={(event, newValue) => onChange(newValue?.clientId || "")}
       filterSelectedOptions
-      renderInput={(params) => <TextField {...params} label="Client" />}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label="Client"
+        />
+      )}
     />
   );
 }

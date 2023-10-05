@@ -137,7 +137,12 @@ export function CreateOperationsDialogue({
           <Button onClick={() => setStage(stage - 1)}>Back</Button>
         )}
         {stage < Stages.Confirm && (
-          <Button onClick={() => setStage(stage + 1)} variant="outlined">
+          <Button
+            onClick={() => {
+              setStage(stage + 1);
+            }}
+            variant="outlined"
+          >
             Next
           </Button>
         )}

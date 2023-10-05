@@ -164,15 +164,6 @@ export function Results({ onCreateClick }: { onCreateClick: () => void }) {
                         }}
                       />
                     </TableCell>
-                    <TableCell
-                      hidden={true}
-                      component="th"
-                      id={labelId}
-                      scope="row"
-                      padding="none"
-                    >
-                      {row.id}
-                    </TableCell>
                     <TableCell align="left">{row.client}</TableCell>
                     <TableCell align="left">{row.retailer}</TableCell>
                     <TableCell align="left">

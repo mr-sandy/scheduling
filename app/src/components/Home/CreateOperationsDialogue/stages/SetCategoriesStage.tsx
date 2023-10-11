@@ -2,6 +2,7 @@ import {
   Checkbox,
   DialogContentText,
   IconButton,
+  Link,
   Paper,
   Stack,
   Table,
@@ -25,7 +26,7 @@ export function SetCategoriesStage({
   setCategories: (value: string[]) => void;
 }) {
   const [filter, setFilter] = useState<string>("");
-  const [rowsPerPage, setRowsPerPage] = useState(7);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [page, setPage] = useState(0);
 
   const filteredCategories = allCategories.filter(
@@ -78,7 +79,11 @@ export function SetCategoriesStage({
               </TableCell>
               <TableCell>
                 Category{" "}
-                {categories.length > 0 && <>({categories.length} selected)</>}
+                {categories.length > 0 && (
+                  <Link component="button" variant="body2" onClick={() => {}}>
+                    ({categories.length} selected)
+                  </Link>
+                )}
               </TableCell>
               <TableCell align="right">
                 <TextField
@@ -124,7 +129,7 @@ export function SetCategoriesStage({
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[7, 10, 20]}
+        rowsPerPageOptions={[5, 7, 10, 20]}
         component="div"
         count={filteredCategories.length}
         rowsPerPage={rowsPerPage}

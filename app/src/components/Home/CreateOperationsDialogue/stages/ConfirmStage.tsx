@@ -1,4 +1,5 @@
 import {
+  Alert,
   DialogContentText,
   Paper,
   Stack,
@@ -28,7 +29,7 @@ function createHash(operation: Operation): string {
 }
 
 export function ConfirmStage({ operations }: { operations: Operation[] }) {
-  const [rowsPerPage, setRowsPerPage] = useState(7);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [page, setPage] = useState(0);
 
   const visibleOperations = operations.slice(
@@ -39,8 +40,10 @@ export function ConfirmStage({ operations }: { operations: Operation[] }) {
   return (
     <Stack spacing={3} paddingTop={3}>
       <DialogContentText>
-        You are about to create {operations.length} new operations. Click `Save`
-        to proceed.
+        <Alert severity="info">
+          You are about to create <b>{operations.length} new operations</b>.
+          Click `Save` to proceed.
+        </Alert>
       </DialogContentText>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -80,7 +83,7 @@ export function ConfirmStage({ operations }: { operations: Operation[] }) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[7, 10, 20]}
+        rowsPerPageOptions={[5, 7, 10, 20]}
         component="div"
         count={operations.length}
         rowsPerPage={rowsPerPage}

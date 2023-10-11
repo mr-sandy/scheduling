@@ -41,11 +41,7 @@ function generateOperations(
       })) as Operation[];
 
     case "category":
-      return (
-        categories?.length === 0
-          ? ["category 1", "category 2", "category 3"]
-          : categories
-      ).map((category) => ({
+      return categories.map((category) => ({
         client,
         retailer,
         operationType,

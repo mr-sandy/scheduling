@@ -28,10 +28,13 @@ export function SetCategoriesStage({
   const [filter, setFilter] = useState<string>("");
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [page, setPage] = useState(0);
+  const [showSelected, setShowSelected] = useState(false);
 
-  const filteredCategories = allCategories.filter(
-    (c) => c.toLowerCase().indexOf(filter.toLowerCase()) > -1
-  );
+  const filteredCategories = showSelected
+    ? categories
+    : allCategories.filter(
+        (c) => c.toLowerCase().indexOf(filter.toLowerCase()) > -1
+      );
 
   const visibleCategories = filteredCategories.slice(
     page * rowsPerPage,
@@ -43,6 +46,8 @@ export function SetCategoriesStage({
   function handleHeaderCheckboxClick() {
     if (categories.length > 0) {
       setCategories([]);
+      setShowSelected(false);
+      setPage(0);
     } else {
       setCategories(visibleCategories);
     }
@@ -59,6 +64,9 @@ export function SetCategoriesStage({
       ...categories.slice(i + 1),
     ];
     setCategories(newCategories);
+    if (newCategories.length === 0) {
+      setShowSelected(false);
+    }
   }
 
   return (
@@ -80,7 +88,14 @@ export function SetCategoriesStage({
               <TableCell>
                 Category{" "}
                 {categories.length > 0 && (
-                  <Link component="button" variant="body2" onClick={() => {}}>
+                  <Link
+                    component="button"
+                    variant="body2"
+                    onClick={() => {
+                      setShowSelected(!showSelected);
+                      setPage(0);
+                    }}
+                  >
                     ({categories.length} selected)
                   </Link>
                 )}
@@ -93,6 +108,7 @@ export function SetCategoriesStage({
                   value={filter}
                   onChange={(e) => {
                     setFilter(e.target.value);
+                    setShowSelected(false);
                     setPage(0);
                   }}
                   InputProps={{

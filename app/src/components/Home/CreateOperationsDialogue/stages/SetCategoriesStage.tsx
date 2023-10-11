@@ -1,16 +1,7 @@
 import {
-  Autocomplete,
-  Box,
   Checkbox,
-  Chip,
   DialogContentText,
-  FormControlLabel,
   IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Paper,
   Stack,
   Table,
@@ -21,11 +12,9 @@ import {
   TablePagination,
   TableRow,
   TextField,
-  Typography,
 } from "@mui/material";
-import CommentIcon from "@mui/icons-material/Comment";
 import { useState } from "react";
-import { Clear, Padding } from "@mui/icons-material";
+import { Clear } from "@mui/icons-material";
 import { allCategories } from "./categories";
 
 export function SetCategoriesStage({
@@ -42,6 +31,21 @@ export function SetCategoriesStage({
   const filteredCategories = allCategories.filter(
     (c) => c.toLowerCase().indexOf(filter.toLowerCase()) > -1
   );
+
+  const visibleCategories = filteredCategories.slice(
+    page * rowsPerPage,
+    (page + 1) * rowsPerPage
+  );
+
+  const headerIsChecked = categories.length > 0;
+
+  function handleHeaderCheckboxClick() {
+    if (categories.length > 0) {
+      setCategories([]);
+    } else {
+      setCategories(visibleCategories);
+    }
+  }
 
   function addCategory(category: string): void {
     setCategories([...categories, category]);
@@ -65,9 +69,16 @@ export function SetCategoriesStage({
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell padding="checkbox"></TableCell>
+              <TableCell padding="checkbox">
+                <Checkbox
+                  color="primary"
+                  checked={headerIsChecked}
+                  onClick={() => handleHeaderCheckboxClick()}
+                />
+              </TableCell>
               <TableCell>
-                Category {categories.length > 0 && <>({categories.length} selected)</>}
+                Category{" "}
+                {categories.length > 0 && <>({categories.length} selected)</>}
               </TableCell>
               <TableCell align="right">
                 <TextField
@@ -91,26 +102,24 @@ export function SetCategoriesStage({
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredCategories
-              .slice(page * rowsPerPage, (page + 1) * rowsPerPage)
-              .map((category) => {
-                const isSelected = categories.includes(category);
-                return (
-                  <TableRow
-                    hover
-                    onClick={() =>
-                      isSelected
-                        ? removeCategory(category)
-                        : addCategory(category)
-                    }
-                  >
-                    <TableCell padding="checkbox">
-                      <Checkbox color="primary" checked={isSelected} />
-                    </TableCell>
-                    <TableCell colSpan={2}>{category}</TableCell>
-                  </TableRow>
-                );
-              })}
+            {visibleCategories.map((category) => {
+              const isSelected = categories.includes(category);
+              return (
+                <TableRow
+                  hover
+                  onClick={() =>
+                    isSelected
+                      ? removeCategory(category)
+                      : addCategory(category)
+                  }
+                >
+                  <TableCell padding="checkbox">
+                    <Checkbox color="primary" checked={isSelected} />
+                  </TableCell>
+                  <TableCell colSpan={2}>{category}</TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
@@ -121,7 +130,10 @@ export function SetCategoriesStage({
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={(event: unknown, newPage: number) => setPage(newPage)}
-        onRowsPerPageChange={(e) => setRowsPerPage(parseInt(e.target.value))}
+        onRowsPerPageChange={(e) => {
+          setRowsPerPage(parseInt(e.target.value));
+          setPage(0);
+        }}
       />
     </Stack>
   );

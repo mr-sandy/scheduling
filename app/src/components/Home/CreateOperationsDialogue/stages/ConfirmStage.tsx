@@ -7,11 +7,13 @@ import {
   TableCell,
   TableContainer,
   TableHead,
+  TablePagination,
   TableRow,
 } from "@mui/material";
 import { Operation } from "../../../../../../common/types";
 import { OperationTypeChip } from "../../../common/OperationTypeChip";
 import { ScheduleChip } from "../../../common/ScheduleChip";
+import { useState } from "react";
 
 function createHash(operation: Operation): string {
   return (
@@ -26,6 +28,14 @@ function createHash(operation: Operation): string {
 }
 
 export function ConfirmStage({ operations }: { operations: Operation[] }) {
+  const [rowsPerPage, setRowsPerPage] = useState(7);
+  const [page, setPage] = useState(0);
+
+  const visibleOperations = operations.slice(
+    page * rowsPerPage,
+    (page + 1) * rowsPerPage
+  );
+
   return (
     <Stack spacing={3} paddingTop={3}>
       <DialogContentText>
@@ -44,7 +54,7 @@ export function ConfirmStage({ operations }: { operations: Operation[] }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {operations.map((operation) => (
+            {visibleOperations.map((operation) => (
               <TableRow
                 key={createHash(operation)}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -69,6 +79,18 @@ export function ConfirmStage({ operations }: { operations: Operation[] }) {
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[7, 10, 20]}
+        component="div"
+        count={operations.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={(event: unknown, newPage: number) => setPage(newPage)}
+        onRowsPerPageChange={(e) => {
+          setRowsPerPage(parseInt(e.target.value));
+          setPage(0);
+        }}
+      />
     </Stack>
   );
 }

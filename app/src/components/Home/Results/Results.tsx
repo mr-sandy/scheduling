@@ -69,12 +69,13 @@ export function Results({ onCreateClick }: { onCreateClick: () => void }) {
   };
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked) {
+    if (selected.length === 0) {
       const newSelected = rows.map((n) => n.id);
       setSelected(newSelected);
       return;
+    } else {
+      setSelected([]);
     }
-    setSelected([]);
   };
 
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {

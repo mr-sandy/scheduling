@@ -89,7 +89,9 @@ export function CreateOperationsDialogue({
 
   return (
     <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="md">
-      <DialogTitle>Create Operations</DialogTitle>
+      <DialogTitle sx={{ boxShadow: 2, zIndex: 1 }}>
+        Create Operations
+      </DialogTitle>
       <DialogContent sx={{ minHeight: 400 }}>
         {stage === Stages.Start && (
           <StartStage
@@ -129,7 +131,9 @@ export function CreateOperationsDialogue({
           />
         )}
       </DialogContent>
-      <DialogActions sx={{ padding: 3 }}>
+      <DialogActions
+        sx={{ padding: 3, borderTop: 1, borderColor: "divider", boxShadow: 3 }}
+      >
         {stage === Stages.Start && (
           <Button onClick={handleClose}>Cancel</Button>
         )}

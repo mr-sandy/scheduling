@@ -14,7 +14,7 @@ export function SetSearchTermsStage({
   setSearchTerms: (value: string[]) => void;
 }) {
   return (
-    <Stack spacing={3} paddingTop={1}>
+    <Stack spacing={3} paddingTop={3}>
       <DialogContentText>
         Enter one or more search terms for the new operations.
       </DialogContentText>

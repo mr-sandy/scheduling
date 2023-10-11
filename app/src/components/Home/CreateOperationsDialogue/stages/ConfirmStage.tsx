@@ -27,7 +27,7 @@ function createHash(operation: Operation): string {
 
 export function ConfirmStage({ operations }: { operations: Operation[] }) {
   return (
-    <Stack spacing={3} paddingTop={1}>
+    <Stack spacing={3} paddingTop={3}>
       <DialogContentText>
         You are about to create {operations.length} new operations. Click `Save`
         to proceed.

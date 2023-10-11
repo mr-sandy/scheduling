@@ -25,7 +25,7 @@ export function StartStage({
 }): JSX.Element {
   return (
     <>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} paddingTop={3}>
         <Grid item xs={12}>
           <DialogContentText>
             Specify the client, retailer, operation type and schedule for the

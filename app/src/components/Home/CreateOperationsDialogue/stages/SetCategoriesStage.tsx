@@ -13,55 +13,20 @@ import {
   ListItemText,
   Paper,
   Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
   TextField,
   Typography,
 } from "@mui/material";
 import CommentIcon from "@mui/icons-material/Comment";
 import { useState } from "react";
-import { Padding } from "@mui/icons-material";
-import { allCategories, Category } from "./categories";
-
-function CategoryRow({
-  category,
-  indent = 0,
-}: {
-  category: Category;
-  indent?: number;
-}) {
-  return (
-    <>
-      <ListItem
-        key={category.name}
-        disablePadding
-        sx={{ borderBottom: 1, borderColor: "divider" }}
-      >
-        <ListItemButton
-          // onClick={handleToggle(value)}
-          dense
-        >
-          <ListItemIcon
-            sx={{ minWidth: "initial", paddingLeft: indent ? indent * 3 : 0 }}
-          >
-            <Checkbox
-              edge="start"
-              // checked={checked.indexOf(value) !== -1}
-              tabIndex={-1}
-              disableRipple
-              // inputProps={{ 'aria-labelledby': labelId }}
-              //     // checked={checked[0] && checked[1]}
-              //     // indeterminate={checked[0] !== checked[1]}
-              //     // onChange={handleChange1}
-            />
-          </ListItemIcon>
-          <ListItemText id={category.name} primary={category.name} />
-        </ListItemButton>
-      </ListItem>
-      {category.children?.map((category) => (
-        <CategoryRow category={category} indent={indent ? indent + 1 : 1} />
-      ))}
-    </>
-  );
-}
+import { Clear, Padding } from "@mui/icons-material";
+import { allCategories } from "./categories";
 
 export function SetCategoriesStage({
   categories,
@@ -70,50 +35,94 @@ export function SetCategoriesStage({
   categories: string[];
   setCategories: (value: string[]) => void;
 }) {
-  const [checked, setChecked] = useState([true, false]);
+  const [filter, setFilter] = useState<string>("");
+  const [rowsPerPage, setRowsPerPage] = useState(7);
+  const [page, setPage] = useState(0);
 
-  const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([event.target.checked, event.target.checked]);
-  };
-
-  const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([event.target.checked, checked[1]]);
-  };
-
-  const handleChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([checked[0], event.target.checked]);
-  };
-
-  const children = (
-    <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
-      <FormControlLabel
-        label={<Typography variant="body2">Child 1</Typography>}
-        control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-      />
-      <FormControlLabel
-        label={<Typography variant="body2">Child 2</Typography>}
-        control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
-      />
-    </Box>
+  const filteredCategories = allCategories.filter(
+    (c) => c.toLowerCase().indexOf(filter.toLowerCase()) > -1
   );
+
+  function addCategory(category: string): void {
+    setCategories([...categories, category]);
+  }
+
+  function removeCategory(category: string): void {
+    const i = categories.indexOf(category);
+    const newCategories = [
+      ...categories.slice(0, i),
+      ...categories.slice(i + 1),
+    ];
+    setCategories(newCategories);
+  }
 
   return (
     <Stack spacing={3} paddingTop={3}>
       <DialogContentText>
-        Enter one or more search terms for the new operations.
+        Enter one or more categories for the new operations.
       </DialogContentText>
-      <Paper>
-        <Box sx={{ padding: 2, borderBottom: 1, borderColor: "divider" }}>
-          <Typography variant="body2" component="span" fontWeight={500}>
-            Category
-          </Typography>
-        </Box>
-        <List disablePadding>
-          {allCategories.map((category) => (
-            <CategoryRow category={category} />
-          ))}
-        </List>
-      </Paper>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell padding="checkbox"></TableCell>
+              <TableCell>
+                Category {categories.length > 0 && <>({categories.length} selected)</>}
+              </TableCell>
+              <TableCell align="right">
+                <TextField
+                  label="Filter"
+                  size="small"
+                  variant="outlined"
+                  value={filter}
+                  onChange={(e) => {
+                    setFilter(e.target.value);
+                    setPage(0);
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <IconButton size="small" onClick={() => setFilter("")}>
+                        <Clear fontSize="small" />
+                      </IconButton>
+                    ),
+                  }}
+                ></TextField>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredCategories
+              .slice(page * rowsPerPage, (page + 1) * rowsPerPage)
+              .map((category) => {
+                const isSelected = categories.includes(category);
+                return (
+                  <TableRow
+                    hover
+                    onClick={() =>
+                      isSelected
+                        ? removeCategory(category)
+                        : addCategory(category)
+                    }
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox color="primary" checked={isSelected} />
+                    </TableCell>
+                    <TableCell colSpan={2}>{category}</TableCell>
+                  </TableRow>
+                );
+              })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[7, 10, 20]}
+        component="div"
+        count={filteredCategories.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={(event: unknown, newPage: number) => setPage(newPage)}
+        onRowsPerPageChange={(e) => setRowsPerPage(parseInt(e.target.value))}
+      />
     </Stack>
   );
 }

@@ -41,7 +41,11 @@ function generateOperations(
       })) as Operation[];
 
     case "category":
-      return (categories?.length === 0 ? ["category 1", "category 2", "category 3"] : categories).map((category) => ({
+      return (
+        categories?.length === 0
+          ? ["category 1", "category 2", "category 3"]
+          : categories
+      ).map((category) => ({
         client,
         retailer,
         operationType,
@@ -92,7 +96,7 @@ export function CreateOperationsDialogue({
       <DialogTitle sx={{ boxShadow: 2, zIndex: 1 }}>
         Create Operations
       </DialogTitle>
-      <DialogContent sx={{ minHeight: 400 }}>
+      <DialogContent sx={{ minHeight: 400, height: "75vh" }}>
         {stage === Stages.Start && (
           <StartStage
             client={client}

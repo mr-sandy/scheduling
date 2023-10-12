@@ -113,6 +113,28 @@ export function CreateOperationsDialogue({
     setStage(Stages.Complete);
   }
 
+  function canProceed() {
+    switch (stage) {
+      case Stages.Start:
+        return client !== "" && retailer !== "" && operationType !== "" && schedule !== "";
+      case Stages.SetParams:
+        switch (operationType) {
+          case "search":
+            return searchTerms.length > 0;
+          case "category":
+            return categories.length > 0;
+          case "detail":
+            return productIds.length > 0;
+          default:
+            return false;
+        }
+      case Stages.Confirm:
+        return true;
+      default:
+        return false;
+    }
+  }
+
   return (
     <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="md">
       <DialogTitle sx={{ boxShadow: 2, zIndex: 1 }}>
@@ -143,7 +165,9 @@ export function CreateOperationsDialogue({
             setCategories={setCategories}
           />
         )}
-        {(stage === Stages.Confirm || stage === Stages.Complete ) && <ConfirmStage operations={operations} success={success} />}
+        {(stage === Stages.Confirm || stage === Stages.Complete) && (
+          <ConfirmStage operations={operations} success={success} />
+        )}
       </DialogContent>
       <DialogActions
         sx={{ padding: 3, borderTop: 1, borderColor: "divider", boxShadow: 3 }}
@@ -155,12 +179,12 @@ export function CreateOperationsDialogue({
           <Button onClick={handlePreviousPage}>Back</Button>
         )}
         {stage < Stages.Confirm && (
-          <Button onClick={handleNextPage} variant="outlined">
+          <Button onClick={handleNextPage} variant="outlined" disabled={!canProceed()} >
             Next
           </Button>
         )}
         {stage === Stages.Confirm && (
-          <Button onClick={handleSave} variant="contained" color="primary">
+          <Button onClick={handleSave} variant="contained" color="primary" >
             Save
           </Button>
         )}

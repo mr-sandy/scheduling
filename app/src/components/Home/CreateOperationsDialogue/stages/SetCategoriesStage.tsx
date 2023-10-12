@@ -141,10 +141,10 @@ export function SetCategoriesStage({
             </TableRow>
           </TableHead>
           <TableBody>
-            {visibleCategories.map((category) => {
+            {visibleCategories.map((category, index) => {
               const isSelected = categories.includes(category);
               return (
-                <TableRow
+                <TableRow key={index}
                   hover
                   onClick={() => handleRowClick(isSelected, category)}
                 >

@@ -51,6 +51,7 @@ hbs_1.default.registerHelper('json', function (context) {
     return JSON.stringify(context);
 });
 app.get("/operations", operationsHandler.handleGetList);
+app.post("/operations", operationsHandler.handlePost);
 app.get("/boms", bomHandler.handleGetList);
 app.post("/boms", bomHandler.handlePost);
 app.get("/boms/:id", bomHandler.handleGet);

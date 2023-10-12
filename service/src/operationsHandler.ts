@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import * as operationsRepository from "./operationsRepository";
 import { negotiate } from "./utils";
+import { Operation } from "../../common/types";
 
 export function handleGetList(req: Request, res: Response) {
   const [operations, count] = operationsRepository.getList({
@@ -14,6 +15,10 @@ export function handleGetList(req: Request, res: Response) {
 }
 
 export function handlePost(req: Request, res: Response) {
+  const operations = req.body as Operation[];
+  operations.forEach((operation) => {
+    operationsRepository.addItem(operation);
+  });
   res.sendStatus(200);
 }
 

@@ -29,6 +29,7 @@ hbs.registerHelper('json', function(context) {
 });
 
 app.get("/operations", operationsHandler.handleGetList);
+app.post("/operations", operationsHandler.handlePost);
 
 app.get("/boms", bomHandler.handleGetList);
 app.post("/boms", bomHandler.handlePost);

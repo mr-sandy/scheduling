@@ -13,12 +13,13 @@ import {
   ConfirmStage,
 } from "./stages";
 import { Operation } from "../../../../../common/types";
+import { createOperations } from "../../../services/operationsService";
 
 enum Stages {
   Start = 0,
   SetParams,
   Confirm,
-  Review,
+  Complete,
 }
 
 function generateOperations(
@@ -86,6 +87,31 @@ export function CreateOperationsDialogue({
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [productIds, setProductIds] = useState<string[]>([]);
+  const [success, setSuccess] = useState<boolean | null>(null);
+
+  const operations = generateOperations(
+    client,
+    retailer,
+    operationType,
+    schedule,
+    searchTerms,
+    categories,
+    productIds
+  );
+
+  function handleNextPage() {
+    setStage(stage + 1);
+  }
+
+  function handlePreviousPage() {
+    setStage(stage - 1);
+  }
+
+  async function handleSave() {
+    const success = await createOperations(operations);
+    setSuccess(success);
+    setStage(Stages.Complete);
+  }
 
   return (
     <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="md">
@@ -117,19 +143,7 @@ export function CreateOperationsDialogue({
             setCategories={setCategories}
           />
         )}
-        {stage === Stages.Confirm && (
-          <ConfirmStage
-            operations={generateOperations(
-              client,
-              retailer,
-              operationType,
-              schedule,
-              searchTerms,
-              categories,
-              productIds
-            )}
-          />
-        )}
+        {(stage === Stages.Confirm || stage === Stages.Complete ) && <ConfirmStage operations={operations} success={success} />}
       </DialogContent>
       <DialogActions
         sx={{ padding: 3, borderTop: 1, borderColor: "divider", boxShadow: 3 }}
@@ -137,31 +151,20 @@ export function CreateOperationsDialogue({
         {stage === Stages.Start && (
           <Button onClick={handleClose}>Cancel</Button>
         )}
-        {stage !== Stages.Start && stage !== Stages.Review && (
-          <Button onClick={() => setStage(stage - 1)}>Back</Button>
+        {stage !== Stages.Start && stage !== Stages.Complete && (
+          <Button onClick={handlePreviousPage}>Back</Button>
         )}
         {stage < Stages.Confirm && (
-          <Button
-            onClick={() => {
-              setStage(stage + 1);
-            }}
-            variant="outlined"
-          >
+          <Button onClick={handleNextPage} variant="outlined">
             Next
           </Button>
         )}
         {stage === Stages.Confirm && (
-          <Button
-            onClick={() => {
-              setStage(stage + 1);
-            }}
-            variant="contained"
-            color="primary"
-          >
+          <Button onClick={handleSave} variant="contained" color="primary">
             Save
           </Button>
         )}
-        {stage === Stages.Review && (
+        {stage === Stages.Complete && (
           <Button onClick={handleClose} variant="outlined">
             Close
           </Button>

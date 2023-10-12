@@ -38,6 +38,10 @@ function handleGetList(req, res) {
 }
 exports.handleGetList = handleGetList;
 function handlePost(req, res) {
+    const operations = req.body;
+    operations.forEach((operation) => {
+        operationsRepository.addItem(operation);
+    });
     res.sendStatus(200);
 }
 exports.handlePost = handlePost;

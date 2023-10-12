@@ -28,7 +28,13 @@ function createHash(operation: Operation): string {
   );
 }
 
-export function ConfirmStage({ operations }: { operations: Operation[] }) {
+export function ConfirmStage({
+  operations,
+  success,
+}: {
+  operations: Operation[];
+  success: boolean | null;
+}) {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [page, setPage] = useState(0);
 
@@ -39,12 +45,22 @@ export function ConfirmStage({ operations }: { operations: Operation[] }) {
 
   return (
     <Stack spacing={3} paddingTop={3}>
-      <DialogContentText>
-        <Alert severity="info">
-          You are about to create <b>{operations.length} new operations</b>.
-          Click `Save` to proceed.
-        </Alert>
-      </DialogContentText>
+        {success === null && 
+          <Alert severity="info">
+            You are about to create {operations.length} new operations
+            Click `Save` to proceed.
+          </Alert>
+        }
+        {success !== null && success && 
+          <Alert severity="success">
+            {operations.length} operations created
+          </Alert>
+        }
+        {success !== null && !success && 
+          <Alert severity="error">
+            Failed to create {operations.length} operations
+          </Alert>
+        }
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

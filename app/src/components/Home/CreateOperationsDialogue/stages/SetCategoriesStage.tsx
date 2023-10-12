@@ -14,7 +14,7 @@ import {
   TableRow,
   TextField,
 } from "@mui/material";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Clear } from "@mui/icons-material";
 import { allCategories } from "./categories";
 
@@ -53,20 +53,45 @@ export function SetCategoriesStage({
     }
   }
 
-  function addCategory(category: string): void {
-    setCategories([...categories, category]);
+  function handleFilterClearClick() {
+    setFilter("");
   }
 
-  function removeCategory(category: string): void {
-    const i = categories.indexOf(category);
-    const newCategories = [
-      ...categories.slice(0, i),
-      ...categories.slice(i + 1),
-    ];
-    setCategories(newCategories);
-    if (newCategories.length === 0) {
-      setShowSelected(false);
+  function handleFilterChange(event: ChangeEvent<HTMLInputElement>) {
+    setFilter(event.target.value);
+    setShowSelected(false);
+    setPage(0);
+  }
+
+  function handleRowClick(isSelected: boolean, category: string) {
+    if (isSelected) {
+      const i = categories.indexOf(category);
+      const newCategories = [
+        ...categories.slice(0, i),
+        ...categories.slice(i + 1),
+      ];
+      setCategories(newCategories);
+      if (newCategories.length === 0) {
+        setShowSelected(false);
+      }
+    } else {
+      setCategories([...categories, category]);
     }
+  }
+
+  function handleShowSelectedClick() {
+    setShowSelected(!showSelected);
+    setFilter("");
+    setPage(0);
+  }
+
+  function handleRowsPerPageChange(event: ChangeEvent<HTMLInputElement>) {
+    setRowsPerPage(parseInt(event.target.value));
+    setPage(0);
+  }
+
+  function handlePageChange(e: unknown, newPage: number) {
+    setPage(newPage);
   }
 
   return (
@@ -82,7 +107,7 @@ export function SetCategoriesStage({
                 <Checkbox
                   color="primary"
                   checked={headerIsChecked}
-                  onClick={() => handleHeaderCheckboxClick()}
+                  onClick={handleHeaderCheckboxClick}
                 />
               </TableCell>
               <TableCell>
@@ -91,10 +116,7 @@ export function SetCategoriesStage({
                   <Link
                     component="button"
                     variant="body2"
-                    onClick={() => {
-                      setShowSelected(!showSelected);
-                      setPage(0);
-                    }}
+                    onClick={handleShowSelectedClick}
                   >
                     ({categories.length} selected)
                   </Link>
@@ -106,14 +128,10 @@ export function SetCategoriesStage({
                   size="small"
                   variant="outlined"
                   value={filter}
-                  onChange={(e) => {
-                    setFilter(e.target.value);
-                    setShowSelected(false);
-                    setPage(0);
-                  }}
+                  onChange={handleFilterChange}
                   InputProps={{
                     endAdornment: (
-                      <IconButton size="small" onClick={() => setFilter("")}>
+                      <IconButton size="small" onClick={handleFilterClearClick}>
                         <Clear fontSize="small" />
                       </IconButton>
                     ),
@@ -128,11 +146,7 @@ export function SetCategoriesStage({
               return (
                 <TableRow
                   hover
-                  onClick={() =>
-                    isSelected
-                      ? removeCategory(category)
-                      : addCategory(category)
-                  }
+                  onClick={() => handleRowClick(isSelected, category)}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox color="primary" checked={isSelected} />
@@ -150,11 +164,8 @@ export function SetCategoriesStage({
         count={filteredCategories.length}
         rowsPerPage={rowsPerPage}
         page={page}
-        onPageChange={(event: unknown, newPage: number) => setPage(newPage)}
-        onRowsPerPageChange={(e) => {
-          setRowsPerPage(parseInt(e.target.value));
-          setPage(0);
-        }}
+        onPageChange={handlePageChange}
+        onRowsPerPageChange={handleRowsPerPageChange}
       />
     </Stack>
   );

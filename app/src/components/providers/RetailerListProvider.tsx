@@ -1,10 +1,14 @@
 import React, { createContext, useContext, useState } from "react";
-import { Retailer, fetchRetailers } from "../services/retailersService";
+import { Retailer, fetchRetailers } from "../../services/retailersService";
 import { useEffect } from "react";
 
 const RetailerListContext = createContext<Retailer[]>([]);
 
-export function RetailerListProvider({ children }: { children: React.ReactElement }) {
+export function RetailerListProvider({
+  children,
+}: {
+  children: React.ReactElement;
+}) {
   const [retailers, setRetailers] = useState<Retailer[]>([]);
 
   useEffect(() => {

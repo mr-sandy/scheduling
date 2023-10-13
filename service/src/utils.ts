@@ -14,3 +14,14 @@ export function negotiate(
     },
   });
 }
+
+export function parseBool(value: string | undefined): boolean | undefined {
+  switch (value) {
+    case "true":
+      return true;
+    case "false":
+      return false;
+    default:
+      return undefined;
+  }
+}

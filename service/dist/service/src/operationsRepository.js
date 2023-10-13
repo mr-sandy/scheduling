@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateItem = exports.addItem = exports.getItem = exports.getList = void 0;
+exports.addItem = exports.getList = void 0;
 const operations_1 = require("./operations");
 function getList(query) {
     const start = query.page * query.rowsPerPage;
@@ -17,15 +17,7 @@ function getList(query) {
     return [filtered.slice(start, end), filtered.length];
 }
 exports.getList = getList;
-function getItem(bomId) {
-    return {};
-}
-exports.getItem = getItem;
 function addItem(operation) {
     operations_1.operations.push(operation);
 }
 exports.addItem = addItem;
-function UpdateItem() {
-    return {};
-}
-exports.UpdateItem = UpdateItem;

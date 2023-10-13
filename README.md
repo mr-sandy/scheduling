@@ -3,13 +3,13 @@
 ## to do
 - ~~validation~~
 - ~~multistore~~
-- rename routes
-- delete old files
-- product selection
-- advanced properties
+- ~~rename routes~~
+- ~~delete old files~~
 - refresh on add
-- delete
-- run now
 - refactor results
+- product selection
+- run now
+- delete
+- advanced properties
 - readme
 ``

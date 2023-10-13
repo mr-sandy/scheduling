@@ -37,14 +37,6 @@ export function getList(query: {
   return [filtered.slice(start, end), filtered.length];
 }
 
-export function getItem(bomId: string) {
-  return {};
-}
-
 export function addItem(operation: Operation) {
   operations.push(operation);
-}
-
-export function UpdateItem() {
-  return {};
 }

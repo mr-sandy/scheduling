@@ -1,5 +1,5 @@
 import { Autocomplete, TextField } from "@mui/material";
-import { useClients } from "../../ClientListProvider";
+import { useClients } from "../../providers/ClientListProvider";
 
 export default function ClientFilter({
   value,

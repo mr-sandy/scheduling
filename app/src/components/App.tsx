@@ -10,8 +10,8 @@ import { MyAppBar } from "./MyAppBar";
 import { DrawerHeader, MyDrawer } from "./MyDrawer";
 import { myTheme } from "./myTheme";
 import { Home } from "./Home/Home";
-import { RetailerListProvider } from "./RetailerListProvider";
-import { ClientListProvider } from "./ClientListProvider";
+import { RetailerListProvider } from "./providers/RetailerListProvider";
+import { ClientListProvider } from "./providers/ClientListProvider";
 
 export default function App() {
   const [open, setOpen] = React.useState(false);
@@ -28,8 +28,8 @@ export default function App() {
               <Box component="main" sx={{ flexGrow: 1 }}>
                 <DrawerHeader />
                 <Routes>
-                  <Route index element={<Navigate to="/scheduling" />} />
-                  <Route path="scheduling" element={<Home />} />
+                  <Route index element={<Navigate to="/client-operations" />} />
+                  <Route path="client-operations" element={<Home />} />
                 </Routes>
               </Box>
             </Box>

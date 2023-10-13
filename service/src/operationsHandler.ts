@@ -2,17 +2,7 @@ import { Request, Response } from "express";
 import * as operationsRepository from "./operationsRepository";
 import { negotiate } from "./utils";
 import { Operation } from "../../common/types";
-
-function parseBool(value: string | undefined): boolean | undefined {
-  switch (value) {
-    case "true":
-      return true;
-    case "false":
-      return false;
-    default:
-      return undefined;
-  }
-}
+import { parseBool } from "./utils";
 
 export function handleGetList(req: Request, res: Response) {
   const [operations, count] = operationsRepository.getList({
@@ -31,13 +21,5 @@ export function handlePost(req: Request, res: Response) {
   operations.forEach((operation) => {
     operationsRepository.addItem(operation);
   });
-  res.sendStatus(200);
-}
-
-export function handleGet(req: Request, res: Response) {
-  res.sendStatus(200);
-}
-
-export function handlePut(req: Request, res: Response) {
   res.sendStatus(200);
 }

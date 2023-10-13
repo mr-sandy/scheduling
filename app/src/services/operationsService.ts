@@ -34,7 +34,7 @@ export async function fetchOperations({
 
   try {
     const res = await axios.get<{ operations: Operation[]; count: number }>(
-      `http://localhost:8080/operations?${queryParams.toString()}`
+      `http://localhost:8080/client-operations?${queryParams.toString()}`
     );
     return res.data;
   } catch (error) {
@@ -47,7 +47,7 @@ export async function createOperations(
   operations: Operation[]
 ): Promise<boolean> {
   try {
-    await axios.post(`http://localhost:8080/operations`, operations);
+    await axios.post(`http://localhost:8080/client-operations`, operations);
     return true;
   } catch (error) {
     console.log("error", error);

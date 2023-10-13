@@ -30,7 +30,6 @@ const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
 const cors_1 = __importDefault(require("cors"));
-const bomHandler = __importStar(require("./bomHandler"));
 const operationsHandler = __importStar(require("./operationsHandler"));
 const hbs_1 = __importDefault(require("hbs"));
 dotenv_1.default.config();
@@ -43,19 +42,14 @@ app.use(express_1.default.static(appBuidPath));
 app.use(express_1.default.static("public"));
 app.use(express_1.default.json()); // for parsing application/json
 app.use((0, cors_1.default)());
-//app.set('view engine', 'hbs');
 app.set('view engine', 'html');
 app.engine('html', hbs_1.default.__express);
 app.set('views', path_1.default.join(appBuidPath));
 hbs_1.default.registerHelper('json', function (context) {
     return JSON.stringify(context);
 });
-app.get("/operations", operationsHandler.handleGetList);
-app.post("/operations", operationsHandler.handlePost);
-app.get("/boms", bomHandler.handleGetList);
-app.post("/boms", bomHandler.handlePost);
-app.get("/boms/:id", bomHandler.handleGet);
-app.put("/boms/:id", bomHandler.handlePut);
+app.get("/client-operations", operationsHandler.handleGetList);
+app.post("/client-operations", operationsHandler.handlePost);
 app.listen(port, host, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.negotiate = void 0;
+exports.parseBool = exports.negotiate = void 0;
 function negotiate(res, data, id) {
     res.format({
         "application/json": function () {
@@ -12,3 +12,14 @@ function negotiate(res, data, id) {
     });
 }
 exports.negotiate = negotiate;
+function parseBool(value) {
+    switch (value) {
+        case "true":
+            return true;
+        case "false":
+            return false;
+        default:
+            return undefined;
+    }
+}
+exports.parseBool = parseBool;

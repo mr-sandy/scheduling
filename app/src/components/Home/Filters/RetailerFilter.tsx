@@ -1,5 +1,5 @@
 import { Autocomplete, TextField } from "@mui/material";
-import { useRetailers } from "../../RetailerListProvider";
+import { useRetailers } from "../../providers/RetailerListProvider";
 import { Retailer } from "../../../services/retailersService";
 
 export default function RetailerFilter({
@@ -20,7 +20,9 @@ export default function RetailerFilter({
       options={retailers}
       getOptionLabel={(option) => option.retailerId}
       value={findOperationTypes(value)}
-      onChange={(event, newValue) => onChange(newValue.map((v) => v.retailerId))}
+      onChange={(event, newValue) =>
+        onChange(newValue.map((v) => v.retailerId))
+      }
       filterSelectedOptions
       renderInput={(params) => <TextField {...params} label="Retailers" />}
     />

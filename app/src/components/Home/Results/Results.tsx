@@ -17,6 +17,7 @@ import { EnhancedTableToolbar } from "./EnhancedTableToolbar";
 import { EnhancedTableHead } from "./EnhancedTableHead";
 import { OperationTypeChip } from "../../common/OperationTypeChip";
 import { ScheduleChip } from "../../common/ScheduleChip";
+import { MultistoreChip } from "../../common/MultistoreChip";
 
 export type Order = "asc" | "desc";
 
@@ -38,6 +39,13 @@ export function Results({ onCreateClick }: { onCreateClick: () => void }) {
 
   const clients = searchParams.getAll("client") || ([] as string[]);
 
+  const multistore: boolean | null =
+    searchParams.get("multistore") === "true"
+      ? true
+      : searchParams.get("multistore") === "false"
+      ? false
+      : null;
+
   React.useEffect(() => {
     setPage(0);
     refreshOperations();
@@ -52,6 +60,7 @@ export function Results({ onCreateClick }: { onCreateClick: () => void }) {
       operationTypes,
       retailers,
       clients,
+      multistore,
       rowsPerPage,
       page,
     });
@@ -176,6 +185,9 @@ export function Results({ onCreateClick }: { onCreateClick: () => void }) {
                     <TableCell align="left">
                       <ScheduleChip schedule={row.schedule} />
                     </TableCell>
+                    <TableCell align="left">
+                      <MultistoreChip multistore={row.multistore} />
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -203,7 +215,7 @@ export function Results({ onCreateClick }: { onCreateClick: () => void }) {
       </Paper>
       <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
+        label="Compressed view"
       />
     </Box>
   );

@@ -61,6 +61,7 @@ export interface Operation {
   retailer: string;
   operationType: string;
   schedule: string;
+  multistore?: boolean;
   searchTerm?: string;
   category?: string;
   productId?: string;

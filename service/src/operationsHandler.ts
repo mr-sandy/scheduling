@@ -3,6 +3,17 @@ import * as operationsRepository from "./operationsRepository";
 import { negotiate } from "./utils";
 import { Operation } from "../../common/types";
 
+function parseBool(value: string | undefined): boolean | undefined {
+  switch (value) {
+    case "true":
+      return true;
+    case "false":
+      return false;
+    default:
+      return undefined;
+  }
+}
+
 export function handleGetList(req: Request, res: Response) {
   const [operations, count] = operationsRepository.getList({
     operationTypes: req.query.operationType as string[],
@@ -10,6 +21,7 @@ export function handleGetList(req: Request, res: Response) {
     clients: req.query.client as string[],
     rowsPerPage: parseInt(req.query.rowsPerPage as string),
     page: parseInt(req.query.page as string),
+    multistore: parseBool(req.query.multistore as string),
   });
   negotiate(res, { operations, count }, "operations");
 }

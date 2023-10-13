@@ -15,6 +15,7 @@ import { Operation } from "../../../../../../common/types";
 import { OperationTypeChip } from "../../../common/OperationTypeChip";
 import { ScheduleChip } from "../../../common/ScheduleChip";
 import { useState } from "react";
+import { MultistoreChip } from "../../../common/MultistoreChip";
 
 function createHash(operation: Operation): string {
   return (
@@ -70,6 +71,7 @@ export function ConfirmStage({
               <TableCell>Type</TableCell>
               <TableCell>Parameters</TableCell>
               <TableCell>Schedule</TableCell>
+              <TableCell>Multistore</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -92,6 +94,9 @@ export function ConfirmStage({
                 </TableCell>
                 <TableCell>
                   <ScheduleChip schedule={operation.schedule} />
+                </TableCell>
+                <TableCell>
+                  <MultistoreChip multistore={operation.multistore} />
                 </TableCell>
               </TableRow>
             ))}

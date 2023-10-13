@@ -10,7 +10,7 @@ export default function OperationTypeFilter({
   onChange,
 }: {
   value: string[];
-  onChange: (age: string[]) => void;
+  onChange: (value: string[]) => void;
 }) {
   return (
     <Autocomplete

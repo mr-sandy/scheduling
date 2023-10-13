@@ -29,7 +29,8 @@ function generateOperations(
   schedule: string,
   searchTerms: string[] = [],
   categories: string[] = [],
-  productIds: string[] = []
+  productIds: string[] = [],
+  multistore: boolean
 ): Operation[] {
   switch (operationType) {
     case "search":
@@ -39,6 +40,7 @@ function generateOperations(
         operationType,
         schedule,
         searchTerm,
+        multistore,
       })) as Operation[];
 
     case "category":
@@ -48,6 +50,7 @@ function generateOperations(
         operationType,
         schedule,
         category,
+        multistore,
       })) as Operation[];
 
     case "detail":
@@ -57,6 +60,7 @@ function generateOperations(
         operationType,
         schedule,
         productId,
+        multistore,
       })) as Operation[];
 
     default:
@@ -70,18 +74,23 @@ export function CreateOperationsDialogue({
   defaultClient,
   defaultRetailer,
   defaultOperationType,
+  defaultMultistore,
 }: {
   open: boolean;
   handleClose: () => void;
   defaultClient?: string;
   defaultRetailer?: string;
   defaultOperationType?: string;
+  defaultMultistore?: boolean;
 }) {
   const [stage, setStage] = useState<Stages>(Stages.Start);
   const [client, setClient] = useState<string>(defaultClient || "");
   const [retailer, setRetailer] = useState<string>(defaultRetailer || "");
   const [operationType, setOperationType] = useState<string>(
     defaultOperationType || ""
+  );
+  const [multistore, setMultistore] = useState<boolean>(
+    defaultMultistore || false
   );
   const [schedule, setSchedule] = useState<string>("daily");
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
@@ -96,7 +105,8 @@ export function CreateOperationsDialogue({
     schedule,
     searchTerms,
     categories,
-    productIds
+    productIds,
+    multistore
   );
 
   function handleNextPage() {
@@ -116,7 +126,12 @@ export function CreateOperationsDialogue({
   function canProceed() {
     switch (stage) {
       case Stages.Start:
-        return client !== "" && retailer !== "" && operationType !== "" && schedule !== "";
+        return (
+          client !== "" &&
+          retailer !== "" &&
+          operationType !== "" &&
+          schedule !== ""
+        );
       case Stages.SetParams:
         switch (operationType) {
           case "search":
@@ -151,6 +166,8 @@ export function CreateOperationsDialogue({
             setOperationType={setOperationType}
             schedule={schedule}
             setSchedule={setSchedule}
+            multistore={multistore}
+            setMultistore={setMultistore}
           />
         )}
         {stage === Stages.SetParams && operationType === "search" && (
@@ -179,12 +196,16 @@ export function CreateOperationsDialogue({
           <Button onClick={handlePreviousPage}>Back</Button>
         )}
         {stage < Stages.Confirm && (
-          <Button onClick={handleNextPage} variant="outlined" disabled={!canProceed()} >
+          <Button
+            onClick={handleNextPage}
+            variant="outlined"
+            disabled={!canProceed()}
+          >
             Next
           </Button>
         )}
         {stage === Stages.Confirm && (
-          <Button onClick={handleSave} variant="contained" color="primary" >
+          <Button onClick={handleSave} variant="contained" color="primary">
             Save
           </Button>
         )}

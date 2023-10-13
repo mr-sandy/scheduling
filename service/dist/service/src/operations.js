@@ -116,6 +116,17 @@ function generateOperations(client) {
                 category: category,
             });
         });
+        client.categories.forEach((category) => {
+            ops.push({
+                id: (id++).toString(),
+                operationType: "category",
+                client: client.id,
+                retailer: retailer,
+                multistore: true,
+                schedule: "daily",
+                category: category,
+            });
+        });
         client.productIds.forEach((productId) => {
             ops.push({
                 id: (id++).toString(),

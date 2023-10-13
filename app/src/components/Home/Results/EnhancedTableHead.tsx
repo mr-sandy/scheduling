@@ -12,28 +12,39 @@ import { Order } from "./Results";
 interface HeadCell {
   id: keyof Operation | "parameters";
   label: string;
+  align: "left" | "center" | "right";
 }
 
 export const headCells: readonly HeadCell[] = [
   {
     id: "client",
     label: "Client",
+    align: "left",
   },
   {
     id: "retailer",
     label: "Retailer",
+    align: "left",
   },
   {
     id: "operationType",
     label: "Type",
+    align: "left",
   },
   {
     id: "parameters",
     label: "Parameters",
+    align: "left",
   },
   {
     id: "schedule",
     label: "Schedule",
+    align: "left",
+  },
+  {
+    id: "multistore",
+    label: "Multistore",
+    align: "left",
   },
 ];
 
@@ -80,7 +91,7 @@ export function EnhancedTableHead(props: EnhancedTableProps) {
         {headCells.map((headCell, index) => (
           <TableCell
             key={headCell.id}
-            align="left"
+            align={headCell.align}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel

@@ -4,28 +4,40 @@ import OperationTypeFilter from "./OperationTypeFilter";
 import RetailerFilter from "./RetailerFilter";
 import { useSearchParams } from "react-router-dom";
 import ClientFilter from "./ClientFilter";
+import { MultistoreFilter } from "./MultistoreFilter";
 
 export function Filters() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [operationTypes, setOperationTypes] = React.useState(
+  const [operationTypes, setOperationTypes] = React.useState<string[]>(
     searchParams.getAll("operationType") || ([] as string[])
   );
 
-  const [retailers, setRetailers] = React.useState(
+  const [retailers, setRetailers] = React.useState<string[]>(
     searchParams.getAll("retailer") || ([] as string[])
   );
 
-  const [clients, setClients] = React.useState(
+  const [clients, setClients] = React.useState<string[]>(
     searchParams.getAll("client") || ([] as string[])
   );
 
+  const [multistore, setMultistore] = React.useState<boolean | null>(null);
+
   function handleFilterClick() {
-    setSearchParams({
-      operationType: operationTypes,
-      retailer: retailers,
-      client: clients,
-    });
+    if (multistore === null) {
+      setSearchParams({
+        operationType: operationTypes,
+        retailer: retailers,
+        client: clients,
+      });
+    } else {
+      setSearchParams({
+        operationType: operationTypes,
+        retailer: retailers,
+        client: clients,
+        multistore: multistore.toString(),
+      });
+    }
   }
 
   return (
@@ -46,7 +58,11 @@ export function Filters() {
         <OperationTypeFilter
           value={operationTypes}
           onChange={(value) => setOperationTypes(value)}
-        />{" "}
+        />
+        <MultistoreFilter
+          value={multistore}
+          onChange={(value) => setMultistore(value)}
+        />
         <Button
           variant="outlined"
           size="large"

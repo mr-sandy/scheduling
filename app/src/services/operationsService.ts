@@ -5,12 +5,14 @@ export async function fetchOperations({
   operationTypes,
   retailers,
   clients,
+  multistore,
   rowsPerPage,
   page,
 }: {
   operationTypes: string[];
   retailers: string[];
   clients: string[];
+  multistore: boolean | null;
   rowsPerPage: number;
   page: number;
 }): Promise<{ operations: Operation[]; count: number }> {
@@ -22,6 +24,10 @@ export async function fetchOperations({
 
   retailers.forEach((retailer) => queryParams.append("retailer", retailer));
   clients.forEach((client) => queryParams.append("client", client));
+
+  if (multistore !== null) {
+    queryParams.append("multistore", multistore.toString());
+  }
 
   queryParams.append("rowsPerPage", rowsPerPage.toString());
   queryParams.append("page", page.toString());

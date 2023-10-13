@@ -10,7 +10,10 @@ function getList(query) {
         query.operationTypes.includes(operation.operationType))
         .filter((operation) => query.retailers === undefined ||
         query.retailers.includes(operation.retailer))
-        .filter((operation) => query.clients === undefined || query.clients.includes(operation.client));
+        .filter((operation) => query.clients === undefined || query.clients.includes(operation.client))
+        .filter((operation) => query.multistore === undefined ||
+        (query.multistore === true && operation.multistore === true) ||
+        (query.multistore === false && !operation.multistore));
     return [filtered.slice(start, end), filtered.length];
 }
 exports.getList = getList;

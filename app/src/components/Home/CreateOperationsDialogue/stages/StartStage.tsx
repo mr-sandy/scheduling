@@ -3,6 +3,7 @@ import ClientSelector from "../ClientSelector";
 import RetailerSelector from "../RetailerSelector";
 import OperationTypeSelector from "../OperationTypeSelector";
 import ScheduleSelector from "../ScheduleSelector";
+import MultistoreSelector from "../MultistoreSelector";
 
 export function StartStage({
   client,
@@ -12,7 +13,9 @@ export function StartStage({
   operationType,
   setOperationType,
   schedule,
-  setSchedule
+  setSchedule,
+  multistore,
+  setMultistore,
 }: {
   client: string;
   setClient: (value: string) => void;
@@ -22,6 +25,8 @@ export function StartStage({
   setOperationType: (value: string) => void;
   schedule: string;
   setSchedule: (value: string) => void;
+  multistore: boolean;
+  setMultistore: (value: boolean) => void;
 }): JSX.Element {
   return (
     <>
@@ -54,6 +59,12 @@ export function StartStage({
           <ScheduleSelector
             value={schedule}
             onChange={(value) => setSchedule(value)}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <MultistoreSelector
+            value={multistore}
+            onChange={(value) => setMultistore(value)}
           />
         </Grid>
       </Grid>

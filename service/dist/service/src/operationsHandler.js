@@ -26,6 +26,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handlePut = exports.handleGet = exports.handlePost = exports.handleGetList = void 0;
 const operationsRepository = __importStar(require("./operationsRepository"));
 const utils_1 = require("./utils");
+function parseBool(value) {
+    switch (value) {
+        case "true":
+            return true;
+        case "false":
+            return false;
+        default:
+            return undefined;
+    }
+}
 function handleGetList(req, res) {
     const [operations, count] = operationsRepository.getList({
         operationTypes: req.query.operationType,
@@ -33,6 +43,7 @@ function handleGetList(req, res) {
         clients: req.query.client,
         rowsPerPage: parseInt(req.query.rowsPerPage),
         page: parseInt(req.query.page),
+        multistore: parseBool(req.query.multistore),
     });
     (0, utils_1.negotiate)(res, { operations, count }, "operations");
 }

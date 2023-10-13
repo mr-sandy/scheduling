@@ -2,7 +2,7 @@
 
 ## to do
 - ~~validation~~
-- multistore
+- ~~multistore~~
 - rename routes
 - delete old files
 - product selection
@@ -12,3 +12,4 @@
 - run now
 - refactor results
 - readme
+``

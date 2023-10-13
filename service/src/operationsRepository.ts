@@ -7,6 +7,7 @@ export function getList(query: {
   clients: string[];
   rowsPerPage: number;
   page: number;
+  multistore?: boolean;
 }): [Operation[], number] {
   const start = query.page * query.rowsPerPage;
   const end = start + query.rowsPerPage;
@@ -25,6 +26,12 @@ export function getList(query: {
     .filter(
       (operation) =>
         query.clients === undefined || query.clients.includes(operation.client)
+    )
+    .filter(
+      (operation) =>
+        query.multistore === undefined ||
+        (query.multistore === true && operation.multistore === true) ||
+        (query.multistore === false && !operation.multistore)
     );
 
   return [filtered.slice(start, end), filtered.length];

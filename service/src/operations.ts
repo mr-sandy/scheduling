@@ -126,6 +126,18 @@ export function generateOperations(client: ClientConfig): Operation[] {
       });
     });
 
+    client.categories.forEach((category: string) => {
+      ops.push({
+        id: (id++).toString(),
+        operationType: "category",
+        client: client.id,
+        retailer: retailer,
+        multistore: true,
+        schedule: "daily",
+        category: category,
+      });
+    });
+
     client.productIds.forEach((productId: string) => {
       ops.push({
         id: (id++).toString(),

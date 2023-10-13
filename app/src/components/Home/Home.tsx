@@ -11,7 +11,7 @@ export function Home() {
   const defaultClient = searchParams.get("client") || "";
   const defaultRetailer = searchParams.get("retailer") || "";
   const defaultOperationType = searchParams.get("operationType") || "";
-  const defaultMultstore = searchParams.get("multistore") === "true";
+  const defaultMultistore = searchParams.get("multistore") === "true";
 
   return (
     <Box
@@ -49,7 +49,7 @@ export function Home() {
           defaultClient={defaultClient}
           defaultRetailer={defaultRetailer}
           defaultOperationType={defaultOperationType}
-          defaultMultistore={defaultMultstore}
+          defaultMultistore={defaultMultistore}
         />
       )}
     </Box>

@@ -10,9 +10,7 @@ import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import { useSearchParams } from "react-router-dom";
 import { Operation } from "../../../../../common/types";
-import * as operationsService from "../../../services/operationsService";
 import { EnhancedTableToolbar } from "./EnhancedTableToolbar";
 import { EnhancedTableHead } from "./EnhancedTableHead";
 import { OperationTypeChip } from "../../common/OperationTypeChip";
@@ -21,52 +19,27 @@ import { MultistoreChip } from "../../common/MultistoreChip";
 
 export type Order = "asc" | "desc";
 
-export function Results({ onCreateClick }: { onCreateClick: () => void }) {
+export function Results({
+  operations,
+  count,
+  onCreateClick,
+  page,
+  setPage,
+  rowsPerPage,
+  setRowsPerPage
+}: {
+  operations: Operation[];
+  count: number;
+  onCreateClick: () => void;
+  page: number;
+  setPage: (page: number) => void;
+  rowsPerPage: number;
+  setRowsPerPage: (rowsPerPage: number) => void;
+}) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof Operation>("retailer");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
-  const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [searchParams] = useSearchParams();
-  const [rows, setRows] = React.useState<Operation[]>([]);
-  const [count, setCount] = React.useState<number>(0);
-
-  const operationTypes =
-    searchParams.getAll("operationType") || ([] as string[]);
-
-  const retailers = searchParams.getAll("retailer") || ([] as string[]);
-
-  const clients = searchParams.getAll("client") || ([] as string[]);
-
-  const multistore: boolean | null =
-    searchParams.get("multistore") === "true"
-      ? true
-      : searchParams.get("multistore") === "false"
-      ? false
-      : null;
-
-  React.useEffect(() => {
-    setPage(0);
-    refreshOperations();
-  }, [searchParams.toString()]);
-
-  React.useEffect(() => {
-    refreshOperations();
-  }, [rowsPerPage, page]);
-
-  const refreshOperations = async () => {
-    const { operations, count } = await operationsService.fetchOperations({
-      operationTypes,
-      retailers,
-      clients,
-      multistore,
-      rowsPerPage,
-      page,
-    });
-    setRows(operations);
-    setCount(count);
-  };
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -79,7 +52,7 @@ export function Results({ onCreateClick }: { onCreateClick: () => void }) {
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (selected.length === 0) {
-      const newSelected = rows.map((n) => n.id);
+      const newSelected = operations.map((n) => n.id);
       setSelected(newSelected);
       return;
     } else {
@@ -124,7 +97,7 @@ export function Results({ onCreateClick }: { onCreateClick: () => void }) {
 
   const isSelected = (id: string) => selected.indexOf(id) !== -1;
 
-  // Avoid a layout jump when reaching the last page with empty rows.
+  // Avoid a layout jump when reaching the last page with empty operations.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - count) : 0;
 
@@ -150,7 +123,7 @@ export function Results({ onCreateClick }: { onCreateClick: () => void }) {
               rowCount={count}
             />
             <TableBody>
-              {rows.map((row, index) => {
+              {operations.map((row, index) => {
                 const isItemSelected = isSelected(row.id);
                 const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -161,7 +134,7 @@ export function Results({ onCreateClick }: { onCreateClick: () => void }) {
                     role="checkbox"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
-                    key={row.id}
+                    key={index}
                     selected={isItemSelected}
                     sx={{ cursor: "pointer" }}
                   >

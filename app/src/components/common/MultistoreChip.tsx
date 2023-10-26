@@ -6,5 +6,13 @@ export function MultistoreChip({
 }: {
   multistore: boolean | null | undefined;
 }) {
-  return multistore ? <Chip label="multistore" sx={{bgcolor: "darkgrey", color:"white"}} size="small" /> : <></>;
+  return multistore ? (
+    <Chip
+      label="multistore"
+      sx={{ bgcolor: "#888", color: "white" }}
+      size="small"
+    />
+  ) : (
+    <></>
+  );
 }

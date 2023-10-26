@@ -9,7 +9,7 @@ import { ThemeProvider, Box, CssBaseline } from "@mui/material";
 import { MyAppBar } from "./MyAppBar";
 import { DrawerHeader, MyDrawer } from "./MyDrawer";
 import { myTheme } from "./myTheme";
-import { Home } from "./Home/Home";
+import { ClientOperations } from "./Home/ClientOperations";
 import { RetailerListProvider } from "./providers/RetailerListProvider";
 import { ClientListProvider } from "./providers/ClientListProvider";
 
@@ -29,7 +29,10 @@ export default function App() {
                 <DrawerHeader />
                 <Routes>
                   <Route index element={<Navigate to="/client-operations" />} />
-                  <Route path="client-operations" element={<Home />} />
+                  <Route
+                    path="client-operations"
+                    element={<ClientOperations />}
+                  />
                 </Routes>
               </Box>
             </Box>

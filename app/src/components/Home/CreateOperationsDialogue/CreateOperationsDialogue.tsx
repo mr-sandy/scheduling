@@ -1,19 +1,8 @@
 import { useState } from "react";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-} from "@mui/material";
-import {
-  StartStage,
-  SetSearchTermsStage,
-  SetCategoriesStage,
-  ConfirmStage,
-} from "./stages";
-import { Operation } from "../../../../../common/types";
-import { createOperations } from "../../../services/operationsService";
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
+import { StartStage, SetSearchTermsStage, SetCategoriesStage, ConfirmStage } from "./stages";
+import * as operationsService from "../../../services/operationsService";
+import { generateOperations } from "./generateOperations";
 
 enum Stages {
   Start = 0,
@@ -22,76 +11,28 @@ enum Stages {
   Complete,
 }
 
-function generateOperations(
-  client: string,
-  retailer: string,
-  operationType: string,
-  schedule: string,
-  searchTerms: string[] = [],
-  categories: string[] = [],
-  productIds: string[] = [],
-  multistore: boolean
-): Operation[] {
-  switch (operationType) {
-    case "search":
-      return searchTerms.map((searchTerm) => ({
-        client,
-        retailer,
-        operationType,
-        schedule,
-        searchTerm,
-        multistore,
-      })) as Operation[];
-
-    case "category":
-      return categories.map((category) => ({
-        client,
-        retailer,
-        operationType,
-        schedule,
-        category,
-        multistore,
-      })) as Operation[];
-
-    case "detail":
-      return productIds.map((productId) => ({
-        client,
-        retailer,
-        operationType,
-        schedule,
-        productId,
-        multistore,
-      })) as Operation[];
-
-    default:
-      return [] as Operation[];
-  }
-}
-
 export function CreateOperationsDialogue({
   open,
-  handleClose,
-  defaultClient,
-  defaultRetailer,
-  defaultOperationType,
-  defaultMultistore,
+  onClose,
+  onCreated,
+  defaultClient = "",
+  defaultRetailer = "",
+  defaultOperationType = "",
+  defaultMultistore = false,
 }: {
   open: boolean;
-  handleClose: () => void;
+  onClose: () => void;
+  onCreated: () => void;
   defaultClient?: string;
   defaultRetailer?: string;
   defaultOperationType?: string;
   defaultMultistore?: boolean;
 }) {
   const [stage, setStage] = useState<Stages>(Stages.Start);
-  const [client, setClient] = useState<string>(defaultClient || "");
-  const [retailer, setRetailer] = useState<string>(defaultRetailer || "");
-  const [operationType, setOperationType] = useState<string>(
-    defaultOperationType || ""
-  );
-  const [multistore, setMultistore] = useState<boolean>(
-    defaultMultistore || false
-  );
+  const [client, setClient] = useState<string>(defaultClient);
+  const [retailer, setRetailer] = useState<string>(defaultRetailer);
+  const [operationType, setOperationType] = useState<string>(defaultOperationType);
+  const [multistore, setMultistore] = useState<boolean>(defaultMultistore);
   const [schedule, setSchedule] = useState<string>("daily");
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
@@ -118,20 +59,18 @@ export function CreateOperationsDialogue({
   }
 
   async function handleSave() {
-    const success = await createOperations(operations);
+    const success = await operationsService.createOperations(operations);
     setSuccess(success);
     setStage(Stages.Complete);
+    if (success) {
+      onCreated();
+    }
   }
 
   function canProceed() {
     switch (stage) {
       case Stages.Start:
-        return (
-          client !== "" &&
-          retailer !== "" &&
-          operationType !== "" &&
-          schedule !== ""
-        );
+        return client !== "" && retailer !== "" && operationType !== "" && schedule !== "";
       case Stages.SetParams:
         switch (operationType) {
           case "search":
@@ -151,10 +90,8 @@ export function CreateOperationsDialogue({
   }
 
   return (
-    <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="md">
-      <DialogTitle sx={{ boxShadow: 2, zIndex: 1 }}>
-        Create Operations
-      </DialogTitle>
+    <Dialog open={open} onClose={onClose} fullWidth={true} maxWidth="md">
+      <DialogTitle sx={{ boxShadow: 2, zIndex: 1 }}>Create Operations</DialogTitle>
       <DialogContent sx={{ minHeight: 400, height: "75vh" }}>
         {stage === Stages.Start && (
           <StartStage
@@ -171,36 +108,22 @@ export function CreateOperationsDialogue({
           />
         )}
         {stage === Stages.SetParams && operationType === "search" && (
-          <SetSearchTermsStage
-            searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
-          />
+          <SetSearchTermsStage searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
         )}
         {stage === Stages.SetParams && operationType === "category" && (
-          <SetCategoriesStage
-            categories={categories}
-            setCategories={setCategories}
-          />
+          <SetCategoriesStage categories={categories} setCategories={setCategories} />
         )}
         {(stage === Stages.Confirm || stage === Stages.Complete) && (
           <ConfirmStage operations={operations} success={success} />
         )}
       </DialogContent>
-      <DialogActions
-        sx={{ padding: 3, borderTop: 1, borderColor: "divider", boxShadow: 3 }}
-      >
-        {stage === Stages.Start && (
-          <Button onClick={handleClose}>Cancel</Button>
-        )}
+      <DialogActions sx={{ padding: 3, borderTop: 1, borderColor: "divider", boxShadow: 3 }}>
+        {stage === Stages.Start && <Button onClick={onClose}>Cancel</Button>}
         {stage !== Stages.Start && stage !== Stages.Complete && (
           <Button onClick={handlePreviousPage}>Back</Button>
         )}
         {stage < Stages.Confirm && (
-          <Button
-            onClick={handleNextPage}
-            variant="outlined"
-            disabled={!canProceed()}
-          >
+          <Button onClick={handleNextPage} variant="outlined" disabled={!canProceed()}>
             Next
           </Button>
         )}
@@ -210,7 +133,7 @@ export function CreateOperationsDialogue({
           </Button>
         )}
         {stage === Stages.Complete && (
-          <Button onClick={handleClose} variant="outlined">
+          <Button onClick={onClose} variant="outlined">
             Close
           </Button>
         )}

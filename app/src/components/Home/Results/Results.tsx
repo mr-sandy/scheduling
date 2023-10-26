@@ -36,19 +36,8 @@ export function Results({
   rowsPerPage: number;
   setRowsPerPage: (rowsPerPage: number) => void;
 }) {
-  const [order, setOrder] = React.useState<Order>("asc");
-  const [orderBy, setOrderBy] = React.useState<keyof Operation>("retailer");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
   const [dense, setDense] = React.useState(false);
-
-  const handleRequestSort = (
-    event: React.MouseEvent<unknown>,
-    property: keyof Operation
-  ) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
-  };
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (selected.length === 0) {
@@ -116,10 +105,7 @@ export function Results({
           >
             <EnhancedTableHead
               numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
               rowCount={count}
             />
             <TableBody>

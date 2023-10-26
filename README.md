@@ -5,7 +5,7 @@
 - ~~multistore~~
 - ~~rename routes~~
 - ~~delete old files~~
-- refresh on add
+- ~~refresh on add~~
 - refactor results
 - product selection
 - run now

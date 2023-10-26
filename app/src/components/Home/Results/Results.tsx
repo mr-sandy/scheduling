@@ -1,23 +1,23 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
+import {
+  Box,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TablePagination,
+  TableRow,
+  Paper,
+  Checkbox,
+  FormControlLabel,
+  Switch,
+} from "@mui/material";
 import { Operation } from "../../../../../common/types";
 import { EnhancedTableToolbar } from "./EnhancedTableToolbar";
-import { EnhancedTableHead } from "./EnhancedTableHead";
 import { OperationTypeChip } from "../../common/OperationTypeChip";
 import { ScheduleChip } from "../../common/ScheduleChip";
 import { MultistoreChip } from "../../common/MultistoreChip";
-
-export type Order = "asc" | "desc";
+import { TableHead } from "@mui/material";
 
 export function Results({
   operations,
@@ -26,7 +26,7 @@ export function Results({
   page,
   setPage,
   rowsPerPage,
-  setRowsPerPage
+  setRowsPerPage,
 }: {
   operations: Operation[];
   count: number;
@@ -73,9 +73,7 @@ export function Results({
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
@@ -87,27 +85,40 @@ export function Results({
   const isSelected = (id: string) => selected.indexOf(id) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty operations.
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - count) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - count) : 0;
 
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
-        <EnhancedTableToolbar
-          numSelected={selected.length}
-          onCreateClick={onCreateClick}
-        />
+        <EnhancedTableToolbar numSelected={selected.length} onCreateClick={onCreateClick} />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
             size={dense ? "small" : "medium"}
           >
-            <EnhancedTableHead
-              numSelected={selected.length}
-              onSelectAllClick={handleSelectAllClick}
-              rowCount={count}
-            />
+            <TableHead>
+              <TableRow>
+                <TableCell padding="checkbox">
+                  <Checkbox
+                    color="primary"
+                    indeterminate={selected.length > 0 && selected.length < count}
+                    checked={count > 0 && selected.length === count}
+                    onChange={handleSelectAllClick}
+                    inputProps={{
+                      "aria-label": "select all desserts",
+                    }}
+                  />
+                </TableCell>
+                {["Client", "Retailer", "Type", "Parameters", "Schedule", "Multistore"].map(
+                  (header) => (
+                    <TableCell key={header} align="left">
+                      {header}
+                    </TableCell>
+                  )
+                )}
+              </TableRow>
+            </TableHead>
             <TableBody>
               {operations.map((row, index) => {
                 const isItemSelected = isSelected(row.id);
